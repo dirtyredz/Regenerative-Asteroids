@@ -41,14 +41,17 @@ All messages except for those alerting the player to the sector will be sent to 
 ___
 
 __Version 1.1.0__
+
 [Regenerative Asteroids v1.1.0](https://www.dropbox.com/s/pfqbv8ltoyvd47y/Regenerative-Asteroids-V1.1.0.zip?dl=0)
 
 [Uninstall v1.1.0](https://www.dropbox.com/s/ducto7s4qxr5uvf/Uninstall-Regenerative-Asteroids-V1.1.0.zip?dl=0)
+
 
 __Version 1.0.0__
 [Regenerative Asteroids v1.0.0](https://www.dropbox.com/s/zqhb99t73arpehi/RegenerativeAsteroids.rar?dl=0)
 
 [Uninstall v1.0.0](https://www.dropbox.com/s/xs609eqpwyd2vqr/UninstallRegenerativeAsteroids.RAR?dl=0)
+
 
 ## Changelog
 ___
