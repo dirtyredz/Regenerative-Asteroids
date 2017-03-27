@@ -1,50 +1,66 @@
-Regenerative Asteroids
+[center][b][size=24pt][color=red]Regenerative Asteroid Fields[/color][/size][/b][/center]
+[center][img]http://imgur.com/MAEqA0zh.png[/img][/center]
 
-created by David McClain - Dirtyredz
+[hr]
 
-This mods adds regenerate minable asteroids randomly into the sector generation.
-When a Regenerative Asteroid sector falls below 200 minable asteroids (By default, can be changed in the config) the next time a player enters this sector, the script will create new minable asteroids.
-The appearence of these sectors is propability based like the rest of the game.  This probability can be raised or lowered.
+[center][img]http://imgur.com/72VYU0uh.png[/img][/center]
 
-When a player discovers a Regenerative Asteroid sector, a Server wide message is sent alerting everyone to the cordinates of the sector. (Can be disabled in the config)
+[hr]
 
------------INSTALL-----------
+[center][img]http://imgur.com/7dmHxMOh.png[/img][/center]
+
+[center][b]INSTALL[/b][/center]
+[hr]
+
 simply copy the data folder inside your steam avorion folder (steam local folder) usually C:\Program Files (x86)\Steam\steamapps\common\Avorion
 
------------UNINSTALL-----------
-The issue here is that the script is attatched to the specific sectors.
-In order to uninstall properly you need to revert sectorspecific.lua to its original (Which is included in UninstallRegenerativeAsteroids.rar) by removing lines 64 & 65.
+[center][size=14pt]THIS MOD IS REQUIRED ONLY TO BE INSTALLED ON THE SERVER NO CLIENT INSTALLATION IS REQUIRED[/size][/center]
 
-STEP 1: Remove these lines or replace with orignial.
+[center][b]UNINSTALL[/b][/center]
+[hr]
 
-	"data/scripts/sectorspecific.lua"
+[b]STEP 1[/b]: Replace sectorspecifics.lua and neutralzone.lua with orignial.
 
-	64	--Added by RegenerativeAsteroids - Dirtyredz
-    
-	65	self:addTemplate("sectors/RegenerativeAsteroids")
-
-STEP 2: Delete all files associated with this mod.
+[b]STEP 2[/b]: Delete all files associated with this mod.
 	After which you need to delete every file installed by this mod (except sectorscripts.lua which needs to be modified)
 
-STEP 3: Add my Uninstall script to data/scripts/sector/
+[b]STEP 3[/b]: Add my Uninstall script to data/scripts/sector/
 	then add the data folder included in "UninstallRegenerativeAsteroids.rar" to your Avorion directory. this will add script to terminate and remove the script from each sector you visit which contains the RegenerativeAsteroids Script.
 
-Step 4: Visit every sector which was a Regenerative Asteroid Sector
+[b]Step 4[/b]: Visit every sector which was a Regenerative Asteroid Sector
 	The uninstall is safe to leave in place as it does nothing but kill the script.
 	Otherwise if your confident every sector that had the Regenerative Asteroids script has been visited, you can remove the uninstall file aswell.
 
-WARNING - Failure to remove the script before deleteing the mod will CLEAR the entire sector of every entity (including your ship)
+[b]WARNING [/b]- Failure to remove the script before deleteing the mod will CLEAR the entire sector of every entity (including your ship)
 
------------COMMANDS-----------
-There are a couple of commands available. (Only Administrators will be able to run these commands)
-
-/regen
-  this cmd will turn an already discovered sector into a Regenerative Asteroid sector. This will not destroy or otherwise effect the sector except that it will start to generate minable asteroids.
-
-/deregen
-  this cmd will remove the Regenerative Asteroid script from the sector. This will not effect anything already in the sector.
-
-/regennow
-  this cmd will run the script to regenerate Asteroids immediately, if the min number of asteroids hasnt been reach the script will not generate more.
+[hr]
 
 All messages except for those alerting the player to the sector will be sent to the console. by default you can access the sector with the ' key.
+
+[center][b]Downloads[/b][/center]
+[hr]
+[b]Downloads[/b]
+Version 1.1.0
+[url=https://www.dropbox.com/s/pfqbv8ltoyvd47y/Regenerative-Asteroids-V1.1.0.zip?dl=0]Regenerative Asteroids v1.1.0[/url]
+[url=https://www.dropbox.com/s/ducto7s4qxr5uvf/Uninstall-Regenerative-Asteroids-V1.1.0.zip?dl=0]Uninstall v1.1.0[/url]
+
+Version 1.0.0
+[url=https://www.dropbox.com/s/zqhb99t73arpehi/RegenerativeAsteroids.rar?dl=0]Regenerative Asteroids v1.0.0[/url]
+[url=https://www.dropbox.com/s/xs609eqpwyd2vqr/UninstallRegenerativeAsteroids.RAR?dl=0]Uninstall[/url]
+
+[center][b]Changelog[/b][/center]
+[hr]
+[b]Changelog[/b]
+Version 1.1.0
+-Moved Config.lua FROM scripts/mods/ TO scripts/mods/Regenerative-Asteroids/
+-Fixed Server announcment only sending announcment to player and not server.
+-Added Neurtral Zone Regenerative ASteroids Configuration option, default false.
+-Added config check to neutralzone.lua for configuration options
+-Added SectorGenerator Configuration option, default true.
+-Added config check to SectorSpecifics.lua for configuration options
+-Updated Uninstall to contain original neutralzone.lua(patch 0.11.0.7844) and sectorspecifics.lua(patch 0.11.0.7844)
+-Added readme.txt to Uninstall zip
+
+
+
+Let me know what you guys think.

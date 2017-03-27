@@ -4,12 +4,17 @@ package.path = package.path .. ";data/scripts/?.lua"
 package.path = package.path .. ";data/scripts/sectors/?.lua"
 package.path = package.path .. ";?.lua"
 package.path = package.path .. ";?"
-
 require ("randomext")
 FactionsMap = require ("factionsmap")
 PassageMap = require ("passagemap")
 SectorNameGenerator = require ("sectornamegenerator")
 require ("galaxy")
+
+--Begin Added by RegenerativeAsteroids - Dirtyredz
+package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
+require("Config")
+--End Added by RegenerativeAsteroids - Dirtyredz
+
 
 local assert = assert
 local SectorSpecifics = {}
@@ -61,8 +66,13 @@ function SectorSpecifics:addTemplates()
     self:addTemplate("sectors/piratestation")
 
     self:addTemplate("sectors/asteroidfield")
-    --Added by RegenerativeAsteroids - Dirtyredz
-    self:addTemplate("sectors/RegenerativeAsteroids")
+
+    --Begin Added by RegenerativeAsteroids - Dirtyredz
+    if Config.SectorGenerator == true then
+      self:addTemplate("sectors/RegenerativeAsteroids")
+    end
+    --End Added by RegenerativeAsteroids - Dirtyredz
+
     self:addTemplate("sectors/containerfield")
     self:addTemplate("sectors/smallasteroidfield")
     self:addTemplate("sectors/wreckagefield")

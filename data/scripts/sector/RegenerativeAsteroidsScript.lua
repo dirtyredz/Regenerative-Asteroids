@@ -1,11 +1,11 @@
 if onServer() then
 
 package.path = package.path .. ";data/scripts/lib/?.lua"
-package.path = package.path .. ";data/scripts/mods/?.lua"
+package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
 SectorGenerator = require ("SectorGenerator")
 Placer = require ("placer")
 require ("stringutility")
-require("RegenerativeAsteroidsConfig")
+require("Config")
   function initialize()
       Sector():registerCallback("onPlayerEntered", "onPlayerEntered")
   end
@@ -15,10 +15,8 @@ require("RegenerativeAsteroidsConfig")
       local msg = "You have entered a regenerative asteroid field. Asteroids will regenerate if a min number of minable asteroids is not available."%_T
       local x, y = Sector():getCoordinates()
       local servermsg = "A player has discovered a regenerative asteroid sector, mark your maps. "..x..", "..y
-      if regen.announcment == true then
-        if Sector:hasScript("data/scripts/sector/RegenerativeAsteroidsScript.lua") == false then
-          Server():broadcastChatMessage("Server", 0, servermsg)
-        end
+      if Config.announcment == true then
+        Server():broadcastChatMessage("Server", 0, servermsg)
       end
       player:sendChatMessage("Server", 3, msg)
       RegenerateAsteroids()
@@ -35,7 +33,7 @@ require("RegenerativeAsteroidsConfig")
         end
     end
     print("Number of minable asteroids:  "..num)
-    if num < regen.minableasteroidlimit then
+    if num < Config.minableasteroidlimit then
       local generator = SectorGenerator(Sector():getCoordinates())
       local asteroid = generator:createAsteroidField(0.8)
 
