@@ -48,12 +48,12 @@ simply copy the data folder inside your steam avorion folder (steam local folder
 
 All messages except for those alerting the player to the sector will be sent to the console. by default you can access the sector with the ' key.
 
-## GITHUB
-___
+[b]GITHUB[/b]
+[hr]
 https://github.com/dirtyredz/Regenerative-Asteroids
 
-## TODO
-___
+[b]TODO[/b]
+[hr]
 -Add more configuration options for starting sectors to be Regenerative asteroid Fields.
 
 
