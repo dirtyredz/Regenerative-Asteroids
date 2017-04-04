@@ -48,6 +48,15 @@ ___
 
 All messages except for those alerting the player to the sector will be sent to the console. by default you can access the sector with the ' key.
 
+## GITHUB
+___
+https://github.com/dirtyredz/Regenerative-Asteroids
+
+## TODO
+___
+-Add more configuration options for starting sectors to be Regenerative asteroid Fields.
+
+
 ## Downloads
 ___
 
