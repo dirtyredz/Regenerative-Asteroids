@@ -53,9 +53,9 @@ ___
 
 __Version 1.2.0__
 
-[Regenerative Asteroids v1.1.0](https://www.dropbox.com/s/pfqbv8ltoyvd47y/Regenerative-Asteroids-V1.1.0.zip?dl=0)
+[Regenerative Asteroids v1.2.0](https://www.dropbox.com/s/duj9tqxrjadyyl7/Regenerative-Asteroids-V1.2.0.zip?dl=0)
 
-[Uninstall v1.1.0](https://www.dropbox.com/s/ducto7s4qxr5uvf/Uninstall-Regenerative-Asteroids-V1.1.0.zip?dl=0)
+[Uninstall v1.2.0](https://www.dropbox.com/s/180qlb9sx48xk61/Uninstall-Regenerative-Asteroids-V1.2.0.zip?dl=0)
 
 
 __Version 1.1.0__
