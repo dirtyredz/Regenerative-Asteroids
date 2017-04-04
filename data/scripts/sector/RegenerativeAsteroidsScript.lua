@@ -18,6 +18,7 @@ require("Config")
       local x, y = Sector:getCoordinates()
       local xy = "["..x..", "..y.."]"
       local SectorDiscovered = "A player has discovered a regenerative asteroid sector, mark your maps. "..xy
+      local SectorReVisit = "You have detected a players presence inside a regenerative asteroid field at sector. "..xy
       local SectorVisited = Sector:getValue("RegenerativeAsteroidsVisited")
       local VisitedBool = "true"
       if SectorVisited == nil then
@@ -26,7 +27,12 @@ require("Config")
       if Config.announcment == true and VisitedBool == "false" then
         Sector:setValue("RegenerativeAsteroidsVisited",true)
         Sector:broadcastChatMessage("Server", 0, SectorDiscovered)
-        print(ModInfo.ModPrefix..ModInfo.Version..player.name.." has discovered a regenerative asteroid field at sector "..xy)
+        if ModInfo.Debug then
+          print(ModInfo.ModPrefix..ModInfo.Version..player.name.." has discovered a regenerative asteroid field at sector "..xy)
+        end
+      end
+      if Config.RepeatedSectorEntryAlerts == true then
+        Sector:broadcastChatMessage("Server", 0, SectorReVisit)
       end
       player:sendChatMessage("Server", 3, msg)
       RegenerateAsteroids()
@@ -66,7 +72,9 @@ require("Config")
   			MinableAsteroids = MinableAsteroids + 1
   		end
   	end
-    print(ModInfo.ModPrefix..ModInfo.Version.."Found "..MinableAsteroids.." minable asteroids at sector "..xy)
+    if ModInfo.Debug then
+      print(ModInfo.ModPrefix..ModInfo.Version.."Found "..MinableAsteroids.." minable asteroids at sector "..xy)
+    end
     return MinableAsteroids
   end
 
@@ -79,14 +87,20 @@ require("Config")
     local CurrentMinableAsteroids = GetNumberMinableAsteroids()
     if SectorHasLimit() then
       MaxMinable = GetSectorLimit()
-      print(ModInfo.ModPrefix..ModInfo.Version.."Using sector asteroid limit value: "..MaxMinable..", for sector "..xy)
+      if ModInfo.Debug then
+        print(ModInfo.ModPrefix..ModInfo.Version.."Using sector asteroid limit value: "..MaxMinable..", for sector "..xy)
+      end
     elseif Config.MaintainNaturalAsteroidLimit then
       MaxMinable = CurrentMinableAsteroids
       SetSecotrLimit(CurrentMinableAsteroids)
-      print(ModInfo.ModPrefix..ModInfo.Version.."Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)")
+      if ModInfo.Debug then
+        print(ModInfo.ModPrefix..ModInfo.Version.."Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)")
+      end
     else
       MaxMinable = Config.MinableAsteroidLimit
-      print(ModInfo.ModPrefix..ModInfo.Version.."Using config option MinableAsteroidLimit: "..MaxMinable..", for sector "..xy)
+      if ModInfo.Debug then
+        print(ModInfo.ModPrefix..ModInfo.Version.."Using config option MinableAsteroidLimit: "..MaxMinable..", for sector "..xy)
+      end
     end
 
     if CurrentMinableAsteroids < MaxMinable then
@@ -95,7 +109,9 @@ require("Config")
       local size = getFloat(0.5, 1.0)
       local asteroid = generator:createAsteroidFieldEx(AsteroidsToGenerate * 2,1800 * size, 5.0, 25.0, 1, 0.5)
       Placer.resolveIntersections()
-      print(ModInfo.ModPrefix..ModInfo.Version.."Created "..MaxMinable.." Minable Asteroids in sector "..xy)
+      if ModInfo.Debug then
+        print(ModInfo.ModPrefix..ModInfo.Version.."Created "..MaxMinable.." Minable Asteroids in sector "..xy)
+      end
     end
   end
 end

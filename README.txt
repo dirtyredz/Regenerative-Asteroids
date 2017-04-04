@@ -59,6 +59,10 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 [center][b]Downloads[/b][/center]
 [hr]
+Version 1.2.1
+[url=https://www.dropbox.com/s/uev023id2xpnhqp/Regenerative-Asteroids-V1.2.1.zip?dl=0]Regenerative Asteroids v1.2.1[/url]
+
+
 [b]Downloads[/b]
 Version 1.2.0
 [url=https://www.dropbox.com/s/duj9tqxrjadyyl7/Regenerative-Asteroids-V1.2.0.zip?dl=0]Regenerative Asteroids v1.2.0[/url]
@@ -78,6 +82,11 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.2.1
+-Removed console print out from asteroid regeneration, forgot that everyone could see the server console....
+-Added config option Debug, if true you can see all messages about a sectors regenerative actions. Warning all players can see server console print outs.
+-Added config option for Repeated sector entry. By request to broadcast a message whenever a player is inside a regerative sector.
+
 Version 1.2.0
 -Consolidated commands into single cmd /regen with sub options start,stop,now,and set.
 -Added config option for Natural Asteroid generation, ie if a regenerative sector starts with 56 asteroids the script will never exceed 56 asteroids.
