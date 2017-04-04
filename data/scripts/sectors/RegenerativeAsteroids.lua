@@ -2,7 +2,8 @@
 package.path = package.path .. ";data/scripts/lib/?.lua"
 package.path = package.path .. ";data/scripts/?.lua"
 package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
-
+package.path = package.path .. ";data/scripts/sector/?.lua"
+require ("RegenerativeAsteroidsScript")
 SectorGenerator = require ("SectorGenerator")
 OperationExodus = require ("story/operationexodus")
 Placer = require("placer")
@@ -46,6 +47,10 @@ function SectorTemplate.generate(player, seed, x, y)
         local mat = generator:createSmallAsteroidField()
 
         if math.random() < 0.2 then generator:createStash(mat) end
+    end
+
+    if Config.MaintainNaturalAsteroidLimit then
+      SetSecotrLimit(GetNumberMinableAsteroids())
     end
 
     Sector():addScript("data/scripts/sector/events.lua", "events/pirateattack.lua")

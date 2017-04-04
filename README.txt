@@ -3,11 +3,22 @@
 
 [hr]
 
-[center][img]http://imgur.com/72VYU0uh.png[/img][/center]
+[center][img]http://imgur.com/dZr8rJZ.png[/img][/center]
 
+[center][b]COMMANDS[/b][/center]
 [hr]
+[b]/regen start[/b]
+Will force a sector to become a Regenerative Asteroid Field Sector. THIS WILL NOT overwrite anything already in the sector. Turn your start sectors or your players home sectors into regenerative Asteroid Fields.
 
-[center][img]http://imgur.com/7dmHxMOh.png[/img][/center]
+[b]/regen stop[/b]
+Will Remove the Regenerative Asteroids script to be removed. This will not remove any asteroids, just the script. Will also make the sector safe for uninstall.
+
+[b]/regen now[/b]
+Will force the script to calculate asteroids and the sector limits, instead of waiting on a player to enter the sector.
+
+[b]/regen set x[/b]
+Will set a sector to maintain a specific amount of minable asteroids. This will be Priority over MinableAsteroidLimit and MaintainNaturalAsteroidLimit options.
+
 
 [center][b]INSTALL[/b][/center]
 [hr]
@@ -40,6 +51,12 @@ All messages except for those alerting the player to the sector will be sent to 
 [center][b]Downloads[/b][/center]
 [hr]
 [b]Downloads[/b]
+Version 1.2.0
+[url=https://www.dropbox.com/s/pfqbv8ltoyvd47y/Regenerative-Asteroids-V1.1.0.zip?dl=0]Regenerative Asteroids v1.1.0[/url]
+[url=https://www.dropbox.com/s/ducto7s4qxr5uvf/Uninstall-Regenerative-Asteroids-V1.1.0.zip?dl=0]Uninstall v1.1.0[/url]
+
+Past Download Links:
+[spoiler]
 Version 1.1.0
 [url=https://www.dropbox.com/s/pfqbv8ltoyvd47y/Regenerative-Asteroids-V1.1.0.zip?dl=0]Regenerative Asteroids v1.1.0[/url]
 [url=https://www.dropbox.com/s/ducto7s4qxr5uvf/Uninstall-Regenerative-Asteroids-V1.1.0.zip?dl=0]Uninstall v1.1.0[/url]
@@ -47,10 +64,21 @@ Version 1.1.0
 Version 1.0.0
 [url=https://www.dropbox.com/s/zqhb99t73arpehi/RegenerativeAsteroids.rar?dl=0]Regenerative Asteroids v1.0.0[/url]
 [url=https://www.dropbox.com/s/xs609eqpwyd2vqr/UninstallRegenerativeAsteroids.RAR?dl=0]Uninstall[/url]
+[/spoiler]
 
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.2.0
+-Consolidated commands into single cmd /regen with sub options start,stop,now,and set.
+-Added config option for Natural Asteroid generation, ie if a regenerative sector starts with 56 asteroids the script will never exceed 56 asteroids.
+-Added new command /regen set can be used to force a sector to maintain a specific amount of asteroids, ie /regen set 10 will always maintain 10 minable asteroids. see commands.
+-Fixed server announcment from always playing discovered message, even after its been discovered previously.
+-Added ModInfo and version to console print.
+-Consolidated player command scripts into one file. make sure you delete older versions of those files.
+-Optimized asteroid regeneration script to generate the specific amount of asteroids needed instead of a random amount. (Let me know if your getting to many none minable asteroids)
+-Added Sector X and Y to console print out
+
 Version 1.1.0
 -Moved Config.lua FROM scripts/mods/ TO scripts/mods/Regenerative-Asteroids/
 -Fixed Server announcment only sending announcment to player and not server.
