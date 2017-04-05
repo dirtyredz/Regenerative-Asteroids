@@ -59,17 +59,18 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 [center][b]Downloads[/b][/center]
 [hr]
-Version 1.2.1
-[url=https://www.dropbox.com/s/uev023id2xpnhqp/Regenerative-Asteroids-V1.2.1.zip?dl=0]Regenerative Asteroids v1.2.1[/url]
+Version 1.2.2
+[url=https://www.dropbox.com/s/6ile21i9vls4xn0/Regenerative-Asteroids-V1.2.2.zip?dl=0]Regenerative Asteroids v1.2.2[/url]
 
-
-[b]Downloads[/b]
 Version 1.2.0
 [url=https://www.dropbox.com/s/duj9tqxrjadyyl7/Regenerative-Asteroids-V1.2.0.zip?dl=0]Regenerative Asteroids v1.2.0[/url]
 [url=https://www.dropbox.com/s/180qlb9sx48xk61/Uninstall-Regenerative-Asteroids-V1.2.0.zip?dl=0]Uninstall v1.2.0[/url]
 
 Past Download Links:
 [spoiler]
+Version 1.2.1
+[url=https://www.dropbox.com/s/uev023id2xpnhqp/Regenerative-Asteroids-V1.2.1.zip?dl=0]Regenerative Asteroids v1.2.1[/url]
+
 Version 1.1.0
 [url=https://www.dropbox.com/s/pfqbv8ltoyvd47y/Regenerative-Asteroids-V1.1.0.zip?dl=0]Regenerative Asteroids v1.1.0[/url]
 [url=https://www.dropbox.com/s/ducto7s4qxr5uvf/Uninstall-Regenerative-Asteroids-V1.1.0.zip?dl=0]Uninstall v1.1.0[/url]
@@ -82,6 +83,9 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.2.2
+-Fixxed race condition in script Initialize().  (Error: could not execute function 'initialize' in '""':)
+
 Version 1.2.1
 -Removed console print out from asteroid regeneration, forgot that everyone could see the server console....
 -Added config option Debug, if true you can see all messages about a sectors regenerative actions. Warning all players can see server console print outs.

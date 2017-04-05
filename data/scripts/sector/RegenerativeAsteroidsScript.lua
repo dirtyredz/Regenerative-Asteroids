@@ -8,14 +8,15 @@ require ("randomext")
 require ("stringutility")
 require("Config")
   function initialize()
+      deferredCallback(1,"DefferedInit")
+  end
+  function DefferedInit()
       Sector():registerCallback("onPlayerEntered", "onPlayerEntered")
   end
-
   function onPlayerEntered(playerIndex)
       local Sector = Sector()
       local player = Player(playerIndex)
       local msg = "You have entered a regenerative asteroid field. Asteroids will regenerate if a min number of minable asteroids is not available."%_T
-      local x, y = Sector:getCoordinates()
       local xy = "["..x..", "..y.."]"
       local SectorDiscovered = "A player has discovered a regenerative asteroid sector, mark your maps. "..xy
       local SectorReVisit = "You have detected a players presence inside a regenerative asteroid field at sector. "..xy

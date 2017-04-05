@@ -59,6 +59,9 @@ ___
 
 ## Downloads
 ___
+__Version 1.2.2__
+
+[Regenerative Asteroids v1.2.2](https://www.dropbox.com/s/6ile21i9vls4xn0/Regenerative-Asteroids-V1.2.2.zip?dl=0)
 
 __Version 1.2.1__
 
@@ -86,6 +89,9 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.2.2__
+-Fixxed race condition in script Initialize().  (Error: could not execute function 'initialize' in '""':)
+
 __Version 1.2.1__
 -Removed console print out from asteroid regeneration, forgot that everyone could see the server console....
 -Added config option Debug, if true you can see all messages about a sectors regenerative actions. Warning all players can see server console print outs.
