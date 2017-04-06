@@ -59,6 +59,12 @@ ___
 
 ## Downloads
 ___
+
+__Version 1.2.3__
+
+[Regenerative Asteroids v1.2.3](https://www.dropbox.com/s/p81jf2u4ccbkcwp/Regenerative-Asteroids-V1.2.3.zip?dl=0)
+
+
 __Version 1.2.2__
 
 [Regenerative Asteroids v1.2.2](https://www.dropbox.com/s/6ile21i9vls4xn0/Regenerative-Asteroids-V1.2.2.zip?dl=0)
@@ -89,6 +95,9 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.2.3__
+-Removed redundant code in Sectors files causing a cyclic dependency.
+
 __Version 1.2.2__
 -Fixxed race condition in script Initialize().  (Error: could not execute function 'initialize' in '""':)
 
