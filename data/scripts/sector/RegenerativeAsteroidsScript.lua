@@ -18,7 +18,8 @@ require("Config")
       local Sector = Sector()
       local player = Player(playerIndex)
       local msg = "You have entered a regenerative asteroid field. Asteroids will regenerate if a min number of minable asteroids is not available."%_T
-      local xy = "["..x..", "..y.."]"
+      local x, y = Sector:getCoordinates()
+      local xy = "\\s("..x..", "..y..")"
       local SectorDiscovered = "A player has discovered a regenerative asteroid sector, mark your maps. "..xy
       local SectorReVisit = "You have detected a players presence inside a regenerative asteroid field at sector. "..xy
       local SectorVisited = Sector:getValue("RegenerativeAsteroidsVisited")
@@ -61,7 +62,7 @@ require("Config")
     local MinableAsteroids = 0
     local Sector = Sector()
     local x, y = Sector:getCoordinates()
-    local xy = "["..x..", "..y.."]"
+    local xy = "\\s("..x..", "..y..")"
   	--------
   	-- loop over all the mineable asteroids.
   	--------
@@ -83,7 +84,7 @@ require("Config")
   function RegenerateAsteroids()
     local Sector = Sector()
     local x, y = Sector:getCoordinates()
-    local xy = "["..x..", "..y.."]"
+    local xy = "\\s("..x..", "..y..")"
 
     local MaxMinable = 0
     local CurrentMinableAsteroids = GetNumberMinableAsteroids()

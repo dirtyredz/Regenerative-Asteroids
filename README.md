@@ -54,36 +54,30 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 ## TODO
 ___
--Add more configuration options for starting sectors to be Regenerative asteroid Fields.
+
 
 
 ## Downloads
 ___
+__Version 1.2.4__
+[Regenerative Asteroids v1.2.4](https://www.dropbox.com/s/5olg83i9iikwdxh/Regenerative-Asteroids-V1.2.4.zip?dl=0)
 
 __Version 1.2.3__
-
 [Regenerative Asteroids v1.2.3](https://www.dropbox.com/s/p81jf2u4ccbkcwp/Regenerative-Asteroids-V1.2.3.zip?dl=0)
 
-
 __Version 1.2.2__
-
 [Regenerative Asteroids v1.2.2](https://www.dropbox.com/s/6ile21i9vls4xn0/Regenerative-Asteroids-V1.2.2.zip?dl=0)
 
 __Version 1.2.1__
-
 [Regenerative Asteroids v1.2.1](https://www.dropbox.com/s/uev023id2xpnhqp/Regenerative-Asteroids-V1.2.1.zip?dl=0)
 
 __Version 1.2.0__
-
 [Regenerative Asteroids v1.2.0](https://www.dropbox.com/s/duj9tqxrjadyyl7/Regenerative-Asteroids-V1.2.0.zip?dl=0)
-
 [Uninstall v1.2.0](https://www.dropbox.com/s/180qlb9sx48xk61/Uninstall-Regenerative-Asteroids-V1.2.0.zip?dl=0)
 
 
 __Version 1.1.0__
-
 [Regenerative Asteroids v1.1.0](https://www.dropbox.com/s/pfqbv8ltoyvd47y/Regenerative-Asteroids-V1.1.0.zip?dl=0)
-
 [Uninstall v1.1.0](https://www.dropbox.com/s/ducto7s4qxr5uvf/Uninstall-Regenerative-Asteroids-V1.1.0.zip?dl=0)
 
 
@@ -95,6 +89,10 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.2.4__
+-Added clickable sector cords, to discovery message.
+-Fixed bug from version 1.2.3
+
 __Version 1.2.3__
 -Removed redundant code in Sectors files causing a cyclic dependency.
 

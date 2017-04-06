@@ -54,11 +54,17 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 [b]TODO[/b]
 [hr]
--Add more configuration options for starting sectors to be Regenerative asteroid Fields.
+
 
 
 [center][b]Downloads[/b][/center]
 [hr]
+Version 1.2.4
+[url=https://www.dropbox.com/s/5olg83i9iikwdxh/Regenerative-Asteroids-V1.2.4.zip?dl=0]Regenerative Asteroids v1.2.4[/url]
+
+Version 1.2.3
+[url=https://www.dropbox.com/s/p81jf2u4ccbkcwp/Regenerative-Asteroids-V1.2.3.zip?dl=0]Regenerative Asteroids v1.2.3[/url]
+
 Version 1.2.2
 [url=https://www.dropbox.com/s/6ile21i9vls4xn0/Regenerative-Asteroids-V1.2.2.zip?dl=0]Regenerative Asteroids v1.2.2[/url]
 
@@ -83,6 +89,13 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.2.4
+-Added clickable sector cords, to discovery message.
+-Fixed bug from version 1.2.3
+
+Version 1.2.3
+-Removed redundant code in Sectors files causing a cyclic dependency.
+
 Version 1.2.2
 -Fixxed race condition in script Initialize().  (Error: could not execute function 'initialize' in '""':)
 
