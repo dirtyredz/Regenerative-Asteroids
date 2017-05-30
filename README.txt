@@ -59,6 +59,9 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 [center][b]Downloads[/b][/center]
 [hr]
+Version 1.2.5
+[url=]Regenerative Asteroids v1.2.5[/url]
+
 Version 1.2.4
 [url=https://www.dropbox.com/s/5olg83i9iikwdxh/Regenerative-Asteroids-V1.2.4.zip?dl=0]Regenerative Asteroids v1.2.4[/url]
 
@@ -89,6 +92,13 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.2.5
+-Fixed Conflict with MineCorp mod (changed renamed config.lua).
+-IMPORTANT:  DELETE THE OLD CONFIG.LUA otheriwse the conflict will remain.
+-Added CustonName support for sectors generated as Regenerative Asteroids.
+  ie: it will now show "Regenerative Asteroids" on the map overview when hovering or a Regernative Asteroid SectorTemplate
+  [img]http://imgur.com/XEnUQLS.png[/img]
+
 Version 1.2.4
 -Added clickable sector cords, to discovery message.
 -Fixed bug from version 1.2.3
