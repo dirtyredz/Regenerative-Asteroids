@@ -60,7 +60,7 @@ ___
 ## Downloads
 ___
 __Version 1.2.5__
-[Regenerative Asteroids v1.2.5]()
+[Regenerative Asteroids v1.2.5](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.2.5/Regenerative-Asteroids.v1.2.5.zip)
 
 __Version 1.2.4__
 [Regenerative Asteroids v1.2.4](https://www.dropbox.com/s/5olg83i9iikwdxh/Regenerative-Asteroids-V1.2.4.zip?dl=0)

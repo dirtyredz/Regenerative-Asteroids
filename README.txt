@@ -60,7 +60,7 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 [center][b]Downloads[/b][/center]
 [hr]
 Version 1.2.5
-[url=]Regenerative Asteroids v1.2.5[/url]
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.2.5/Regenerative-Asteroids.v1.2.5.zip]Regenerative Asteroids v1.2.5[/url]
 
 Version 1.2.4
 [url=https://www.dropbox.com/s/5olg83i9iikwdxh/Regenerative-Asteroids-V1.2.4.zip?dl=0]Regenerative Asteroids v1.2.4[/url]
