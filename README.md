@@ -95,6 +95,7 @@ ___
 __Version 1.2.5__
 -Fixed Conflict with MineCorp mod (changed renamed config.lua).
 -IMPORTANT:  DELETE THE OLD CONFIG.LUA otheriwse the conflict will remain.
+-Updated All files to compensate for the rename of CONFIG.lua, also Updated SectorSpecifics.lua.
 -Added CustonName support for sectors generated as Regenerative Asteroids.
   ie: it will now show "Regenerative Asteroids" on the map overview when hovering or a Regernative Asteroid SectorTemplate
   ![alt text](http://imgur.com/XEnUQLS.png)
