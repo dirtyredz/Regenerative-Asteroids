@@ -4,17 +4,12 @@ package.path = package.path .. ";data/scripts/?.lua"
 package.path = package.path .. ";data/scripts/sectors/?.lua"
 package.path = package.path .. ";?.lua"
 package.path = package.path .. ";?"
+
 require ("randomext")
 FactionsMap = require ("factionsmap")
 PassageMap = require ("passagemap")
 SectorNameGenerator = require ("sectornamegenerator")
 require ("galaxy")
-
---Begin Added by RegenerativeAsteroids - Dirtyredz
-package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
-require("RegenerativeAsteroidsConfig")
---End Added by RegenerativeAsteroids - Dirtyredz
-
 
 local assert = assert
 local SectorSpecifics = {}
@@ -66,13 +61,6 @@ function SectorSpecifics:addTemplates()
     self:addTemplate("sectors/piratestation")
 
     self:addTemplate("sectors/asteroidfield")
-
-    --Begin Added by RegenerativeAsteroids - Dirtyredz
-    if RegenerativeAsteroidsConfig.SectorGenerator == true then
-      self:addTemplate("sectors/RegenerativeAsteroids")
-    end
-    --End Added by RegenerativeAsteroids - Dirtyredz
-
     self:addTemplate("sectors/containerfield")
     self:addTemplate("sectors/smallasteroidfield")
     self:addTemplate("sectors/wreckagefield")
@@ -190,7 +178,7 @@ function SectorSpecifics:initialize(x, y, serverSeed)
     self.blocked = false
     self.gates = false
     self.dustyness = 0
-    self.name = x .. " " .. y
+    self.name = x .. " : " .. y
 
     local home = false
     self.regular, self.offgrid, self.blocked, home, self.dustyness = self:determineContent(x, y, serverSeed)
@@ -264,11 +252,6 @@ function SectorSpecifics:initialize(x, y, serverSeed)
         local i = selectByWeight(rand, templatesByWeight)
         self.generationTemplate = self.templates[i]
 
-        --Begin Added by RegenerativeAsteroids - Dirtyredz
-        if self.generationTemplate['CustomName'] ~= nil then
-          self.name = self.generationTemplate.CustomName
-        end
-        --End Added by RegenerativeAsteroids - Dirtyredz
     end
 end
 

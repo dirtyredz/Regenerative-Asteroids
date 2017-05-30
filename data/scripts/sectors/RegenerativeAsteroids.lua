@@ -6,13 +6,14 @@ package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
 SectorGenerator = require ("SectorGenerator")
 OperationExodus = require ("story/operationexodus")
 Placer = require("placer")
-require("Config")
+require("RegenerativeAsteroidsConfig")
 
 local SectorTemplate = {}
+SectorTemplate.CustomName = 'Regenerative Asteroids'
 
 -- must be defined, will be used to get the probability of this sector
 function SectorTemplate.getProbabilityWeight(x, y)
-    return Config.frequency
+    return RegenerativeAsteroidsConfig.frequency
 end
 
 function SectorTemplate.offgrid(x, y)

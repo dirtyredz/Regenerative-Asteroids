@@ -6,7 +6,7 @@ SectorGenerator = require ("SectorGenerator")
 Placer = require ("placer")
 require ("randomext")
 require ("stringutility")
-require("Config")
+require("RegenerativeAsteroidsConfig")
   function initialize()
     Sector():registerCallback("onPlayerEntered", "onPlayerEntered")
       --deferredCallback(1,"DefferedInit")
@@ -27,14 +27,14 @@ require("Config")
       if SectorVisited == nil then
         VisitedBool = "false"
       end
-      if Config.announcment == true and VisitedBool == "false" then
+      if RegenerativeAsteroidsConfig.announcment == true and VisitedBool == "false" then
         Sector:setValue("RegenerativeAsteroidsVisited",true)
         Sector:broadcastChatMessage("Server", 0, SectorDiscovered)
-        if ModInfo.Debug then
-          print(ModInfo.ModPrefix..ModInfo.Version..player.name.." has discovered a regenerative asteroid field at sector "..xy)
+        if RegenerativeAsteroidsModInfo.Debug then
+          print(RegenerativeAsteroidsModInfo.ModPrefix..RegenerativeAsteroidsModInfo.Version..player.name.." has discovered a regenerative asteroid field at sector "..xy)
         end
       end
-      if Config.RepeatedSectorEntryAlerts == true then
+      if RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts == true then
         Sector:broadcastChatMessage("Server", 0, SectorReVisit)
       end
       player:sendChatMessage("Server", 3, msg)
@@ -52,7 +52,7 @@ require("Config")
   end
   function SetSecotrLimit(Num)
     if Num == nil then
-      Num = Config.MinableAsteroidLimit
+      Num = RegenerativeAsteroidsConfig.MinableAsteroidLimit
     end
 
     Sector():setValue("RegenerativeAsteroids",tonumber(Num))
@@ -75,8 +75,8 @@ require("Config")
   			MinableAsteroids = MinableAsteroids + 1
   		end
   	end
-    if ModInfo.Debug then
-      print(ModInfo.ModPrefix..ModInfo.Version.."Found "..MinableAsteroids.." minable asteroids at sector "..xy)
+    if RegenerativeAsteroidsModInfo.Debug then
+      print(RegenerativeAsteroidsModInfo.ModPrefix..RegenerativeAsteroidsModInfo.Version.."Found "..MinableAsteroids.." minable asteroids at sector "..xy)
     end
     return MinableAsteroids
   end
@@ -90,19 +90,19 @@ require("Config")
     local CurrentMinableAsteroids = GetNumberMinableAsteroids()
     if SectorHasLimit() then
       MaxMinable = GetSectorLimit()
-      if ModInfo.Debug then
-        print(ModInfo.ModPrefix..ModInfo.Version.."Using sector asteroid limit value: "..MaxMinable..", for sector "..xy)
+      if RegenerativeAsteroidsModInfo.Debug then
+        print(RegenerativeAsteroidsModInfo.ModPrefix..RegenerativeAsteroidsModInfo.Version.."Using sector asteroid limit value: "..MaxMinable..", for sector "..xy)
       end
-    elseif Config.MaintainNaturalAsteroidLimit then
+    elseif RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit then
       MaxMinable = CurrentMinableAsteroids
       SetSecotrLimit(CurrentMinableAsteroids)
-      if ModInfo.Debug then
-        print(ModInfo.ModPrefix..ModInfo.Version.."Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)")
+      if RegenerativeAsteroidsModInfo.Debug then
+        print(RegenerativeAsteroidsModInfo.ModPrefix..RegenerativeAsteroidsModInfo.Version.."Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)")
       end
     else
-      MaxMinable = Config.MinableAsteroidLimit
-      if ModInfo.Debug then
-        print(ModInfo.ModPrefix..ModInfo.Version.."Using config option MinableAsteroidLimit: "..MaxMinable..", for sector "..xy)
+      MaxMinable = RegenerativeAsteroidsConfig.MinableAsteroidLimit
+      if RegenerativeAsteroidsModInfo.Debug then
+        print(RegenerativeAsteroidsModInfo.ModPrefix..RegenerativeAsteroidsModInfo.Version.."Using config option MinableAsteroidLimit: "..MaxMinable..", for sector "..xy)
       end
     end
 
@@ -112,8 +112,8 @@ require("Config")
       local size = getFloat(0.5, 1.0)
       local asteroid = generator:createAsteroidFieldEx(AsteroidsToGenerate * 2,1800 * size, 5.0, 25.0, 1, 0.5)
       Placer.resolveIntersections()
-      if ModInfo.Debug then
-        print(ModInfo.ModPrefix..ModInfo.Version.."Created "..MaxMinable.." Minable Asteroids in sector "..xy)
+      if RegenerativeAsteroidsModInfo.Debug then
+        print(RegenerativeAsteroidsModInfo.ModPrefix..RegenerativeAsteroidsModInfo.Version.."Created "..MaxMinable.." Minable Asteroids in sector "..xy)
       end
     end
   end

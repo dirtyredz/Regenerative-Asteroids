@@ -1,11 +1,9 @@
 
 package.path = package.path .. ";data/scripts/lib/?.lua"
 package.path = package.path .. ";data/scripts/?.lua"
-package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
 
 SectorGenerator = require ("SectorGenerator")
 Placer = require("placer")
-require("RegenerativeAsteroidsConfig")
 
 local SectorTemplate = {}
 
@@ -84,12 +82,6 @@ function SectorTemplate.generate(player, seed, x, y)
 
     -- this one is added last since it will adjust the events that have been added
     Sector():addScript("data/scripts/sector/neutralzone.lua")
-
-    --Begin Added by RegenerativeAsteroids - Dirtyredz
-    if RegenerativeAsteroidsConfig.NeutralZone then
-      Sector():addScript("data/scripts/sector/RegenerativeAsteroidsScript.lua")
-    end
-    --End Added by RegenerativeAsteroids - Dirtyredz
 
     Placer.resolveIntersections()
 end
