@@ -27,6 +27,6 @@ if onServer() then
   end
 
   function getHelp()
-      return "Sets the current sector to regenerate asteroids, Messages will be outputed to the console. Usage /regen"
+      return "Sets the current sector to regenerate asteroids, Messages will be outputed to the console. Usage /regen [start/stop/now/count/set]"
   end
 end

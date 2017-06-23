@@ -59,6 +59,9 @@ ___
 
 ## Downloads
 ___
+__Version 1.3.0__
+[Regenerative Asteroids v1.3.0](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.3.0/Regenerative-Asteroids.v1.3.0.zip)
+
 __Version 1.2.5__
 [Regenerative Asteroids v1.2.5](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.2.5/Regenerative-Asteroids.v1.2.5.zip)
 
@@ -92,6 +95,9 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.3.0__
+-Added Namespacing
+
 __Version 1.2.5__
 -Fixed Conflict with MineCorp mod (changed renamed config.lua).
 -IMPORTANT:  DELETE THE OLD CONFIG.LUA otheriwse the conflict will remain.
