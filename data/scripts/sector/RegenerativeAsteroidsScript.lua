@@ -117,7 +117,7 @@ if onServer() then
       end
     elseif RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit then
       MaxMinable = CurrentMinableAsteroids
-      SetSecotrLimit(CurrentMinableAsteroids)
+      RegenerativeAsteroidsScript.SetSecotrLimit(CurrentMinableAsteroids)
 
       if RegenerativeAsteroidsModInfo.Debug then
         RegenerativeAsteroidsScript.print("Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)")
