@@ -2,6 +2,7 @@
 package.path = package.path .. ";data/scripts/lib/?.lua"
 package.path = package.path .. ";data/scripts/?.lua"
 package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
+package.path = package.path .. ";configs/?.lua"
 
 SectorGenerator = require ("SectorGenerator")
 OperationExodus = require ("story/operationexodus")

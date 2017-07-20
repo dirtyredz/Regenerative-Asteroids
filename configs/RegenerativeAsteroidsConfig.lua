@@ -9,6 +9,6 @@ RegenerativeAsteroidsConfig = {
 }
 RegenerativeAsteroidsModInfo = {
     ModPrefix = "[Regenerative-Asteroids]";
-    Version = "[1.3.0]";
+    Version = "[1.4.0]";
     Debug = false;--Will enable extra console messages for how many asteroids detected and what method of generation was used.
 }

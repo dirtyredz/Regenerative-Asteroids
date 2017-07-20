@@ -59,6 +59,9 @@ ___
 
 ## Downloads
 ___
+__Version 1.4.0__
+[Regenerative Asteroids v1.4.0](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.0/Regenerative-Asteroids-v1.4.0.zip)
+
 __Version 1.3.0__
 [Regenerative Asteroids v1.3.0](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.3.0/Regenerative-Asteroids.v1.3.0.zip)
 
@@ -95,6 +98,9 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.4.0__
+-Moved configuration to /configs/
+
 __Version 1.3.0__
 -Added Namespacing
 
