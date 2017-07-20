@@ -1,6 +1,5 @@
 
 package.path = package.path .. ";data/scripts/sector/?.lua"
-package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
 package.path = package.path .. ";configs/?.lua"
 
 -- this is so the script won't crash when executed in a context where there's no onServer() or onClient() function available -

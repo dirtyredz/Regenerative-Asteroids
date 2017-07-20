@@ -11,7 +11,6 @@ SectorNameGenerator = require ("sectornamegenerator")
 require ("galaxy")
 
 --Begin Added by RegenerativeAsteroids - Dirtyredz
-package.path = package.path .. ";data/scripts/mods/Regenerative-Asteroids/?.lua"
 package.path = package.path .. ";configs/?.lua"
 require("RegenerativeAsteroidsConfig")
 --End Added by RegenerativeAsteroids - Dirtyredz
