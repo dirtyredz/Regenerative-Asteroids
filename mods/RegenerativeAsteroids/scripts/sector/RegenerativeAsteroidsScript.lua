@@ -1,19 +1,27 @@
-package.path = package.path .. ";data/scripts/lib/?.lua"
-package.path = package.path .. ";configs/?.lua"
-
 -- this is so the script won't crash when executed in a context where there's no onServer() or onClient() function available -
 -- naturally those functions should return false then
 if not onServer then onServer = function() return false end end
 if not onClient then onClient = function() return false end end
 if onClient() then return end
 
+--Custom logging
+package.path = package.path .. ";mods/LogLevels/scripts/lib/?.lua"
+require("PrintLog")
+local logLevels = require("LogLevels")
+
+package.path = package.path .. ";data/scripts/lib/?.lua"
+package.path = package.path .. ";mods/RegenerativeAsteroids/config/?.lua"
+
 -- namespace RegenerativeAsteroidsScript
 RegenerativeAsteroidsScript = {}
 
+
 -- Dirtyredz | David McClain
-function RegenerativeAsteroidsScript.print(message)
-  if message ~= nil then
-    print(RegenerativeAsteroidsModInfo.ModPrefix .. RegenerativeAsteroidsModInfo.Version .. message)
+function RegenerativeAsteroidsScript.print(...)
+  local args = table.pack(...)
+  if args[1] ~= nil then
+    args[1] = RegenerativeAsteroidsModInfo.ModPrefix .. RegenerativeAsteroidsModInfo.Version .. args[1]
+    print(table.unpack(args))
   else
     print(RegenerativeAsteroidsModInfo.ModPrefix .. RegenerativeAsteroidsModInfo.Version .. " nil")
   end
@@ -48,7 +56,7 @@ if onServer() then
       Sector:setValue("RegenerativeAsteroidsVisited",true)
       Sector:broadcastChatMessage("Server", 0, SectorDiscovered)
       if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print(player.name.." has discovered a regenerative asteroid field at sector "..xy)
+        RegenerativeAsteroidsScript.print(player.name.." has discovered a regenerative asteroid field at sector ",xy,logLevels.info)
       end
     end
     if RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts == true then
@@ -96,7 +104,7 @@ if onServer() then
   		end
   	end
     if RegenerativeAsteroidsModInfo.Debug then
-      RegenerativeAsteroidsScript.print("Found "..MinableAsteroids.." minable asteroids at sector "..xy)
+      RegenerativeAsteroidsScript.print("Found "..MinableAsteroids.." minable asteroids at sector ",xy,logLevels.info)
     end
     return MinableAsteroids
   end
@@ -113,20 +121,20 @@ if onServer() then
       MaxMinable = RegenerativeAsteroidsScript.GetSectorLimit()
 
       if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print("Using sector asteroid limit value: "..MaxMinable..", for sector "..xy)
+        RegenerativeAsteroidsScript.print("Using sector asteroid limit value: "..MaxMinable..", for sector ",xy,logLevels.info)
       end
     elseif RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit then
       MaxMinable = CurrentMinableAsteroids
       RegenerativeAsteroidsScript.SetSecotrLimit(CurrentMinableAsteroids)
 
       if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print("Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)")
+        RegenerativeAsteroidsScript.print("Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)",logLevels.info)
       end
     else
       MaxMinable = RegenerativeAsteroidsConfig.MinableAsteroidLimit
 
       if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print("Using config option MinableAsteroidLimit: "..MaxMinable..", for sector "..xy)
+        RegenerativeAsteroidsScript.print("Using config option MinableAsteroidLimit: "..MaxMinable..", for sector ",xy,logLevels.info)
       end
     end
 
@@ -138,7 +146,7 @@ if onServer() then
 
       Placer.resolveIntersections()
       if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print("Created "..MaxMinable.." Minable Asteroids in sector "..xy)
+        RegenerativeAsteroidsScript.print("Created "..MaxMinable.." Minable Asteroids in sector ",xy,logLevels.info)
       end
     end
   end

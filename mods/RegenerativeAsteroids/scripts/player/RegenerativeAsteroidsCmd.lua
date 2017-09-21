@@ -1,6 +1,5 @@
-
-package.path = package.path .. ";data/scripts/sector/?.lua"
-package.path = package.path .. ";configs/?.lua"
+package.path = package.path .. ";mods/RegenerativeAsteroids/scripts/sector/?.lua"
+package.path = package.path .. ";mods/RegenerativeAsteroids/config/?.lua"
 
 -- this is so the script won't crash when executed in a context where there's no onServer() or onClient() function available -
 -- naturally those functions should return false then
@@ -30,12 +29,12 @@ if onServer() then
     local Sector = Sector()
     local x, y = Sector:getCoordinates()
     local xy = "["..x..", "..y.."]"
-    local script = Sector:hasScript("RegenerativeAsteroidsScript.lua")
+    local script = Sector:hasScript("mods/RegenerativeAsteroids/scripts/sector/RegenerativeAsteroidsScript.lua")
 
     if Command == "start" then
       if script == false then
         RegenerativeAsteroidsCmd.print("Starting sector asteroid regeneration for sector "..xy)
-        Sector():addScript("RegenerativeAsteroidsScript.lua")
+        Sector():addScript("mods/RegenerativeAsteroids/scripts/sector/RegenerativeAsteroidsScript.lua")
       else
         RegenerativeAsteroidsCmd.print("Sector "..xy.." is already regeneraterating asteroids, If you would like to stop asteroid regeneration use /regen stop")
       end
@@ -45,7 +44,7 @@ if onServer() then
     elseif Command == "stop" then
       if script == true then
         RegenerativeAsteroidsCmd.print("Stopping sector asteroid regeneration for sector "..xy)
-        Sector():removeScript("RegenerativeAsteroidsScript.lua")
+        Sector():removeScript("mods/RegenerativeAsteroids/scripts/sector/RegenerativeAsteroidsScript.lua")
       else
         RegenerativeAsteroidsCmd.print("Sector "..xy.." does not have asteroids regenerating, If you would like to start a steroid regeneration use /regen start")
       end

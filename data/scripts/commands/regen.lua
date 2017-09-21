@@ -6,13 +6,13 @@ if onServer() then
       if Server:hasAdminPrivileges(Player) then
           local Cmd2 = args[1]
           if Cmd2 == "start" or Cmd2 == "stop" or Cmd2 == "now" or Cmd2 == "count" then
-              Player:addScriptOnce("RegenerativeAsteroidsCmd.lua",Cmd2)
+              Player:addScriptOnce("mods/RegenerativeAsteroids/scripts/player/RegenerativeAsteroidsCmd.lua",Cmd2)
           elseif Cmd2 == "set" then
               if args[2] == null then
                   print('Cmd usage: /regen set [number of asteroids]')
                   return 0, "", ""
               end
-              Player:addScriptOnce("RegenerativeAsteroidsCmd.lua",Cmd2,args[2])
+              Player:addScriptOnce("mods/RegenerativeAsteroids/scripts/player/RegenerativeAsteroidsCmd.lua",Cmd2,args[2])
           else
               print(getHelp())
           end

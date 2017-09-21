@@ -11,7 +11,7 @@ SectorNameGenerator = require ("sectornamegenerator")
 require ("galaxy")
 
 --Begin Added by RegenerativeAsteroids - Dirtyredz
-package.path = package.path .. ";configs/?.lua"
+package.path = package.path .. ";mods/RegenerativeAsteroids/config/?.lua"
 require("RegenerativeAsteroidsConfig")
 --End Added by RegenerativeAsteroids - Dirtyredz
 
@@ -69,7 +69,7 @@ function SectorSpecifics:addTemplates()
 
     --Begin Added by RegenerativeAsteroids - Dirtyredz
     if RegenerativeAsteroidsConfig.SectorGenerator == true then
-      self:addTemplate("sectors/RegenerativeAsteroids")
+      self:addTemplate("mods/RegenerativeAsteroids/scripts/sectors/RegenerativeAsteroids")
     end
     --End Added by RegenerativeAsteroids - Dirtyredz
 

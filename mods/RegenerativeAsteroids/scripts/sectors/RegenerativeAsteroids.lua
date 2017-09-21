@@ -1,7 +1,7 @@
 
 package.path = package.path .. ";data/scripts/lib/?.lua"
 package.path = package.path .. ";data/scripts/?.lua"
-package.path = package.path .. ";configs/?.lua"
+package.path = package.path .. ";mods/RegenerativeAsteroids/config/?.lua"
 
 SectorGenerator = require ("SectorGenerator")
 OperationExodus = require ("story/operationexodus")
@@ -49,12 +49,12 @@ function SectorTemplate.generate(player, seed, x, y)
         if math.random() < 0.2 then generator:createStash(mat) end
     end
 
-    Sector():addScript("data/scripts/sector/events.lua", "events/pirateattack.lua")
+    Sector():addScript("data/scripts/sector/eventscheduler.lua", "events/pirateattack.lua")
 
     generator:addOffgridAmbientEvents()
 
     --Added by dirtyredz
-    Sector():addScript("data/scripts/sector/RegenerativeAsteroidsScript.lua")
+    Sector():addScript("mods/RegenerativeAsteroids/scripts/sector/RegenerativeAsteroidsScript.lua")
 
     Placer.resolveIntersections()
 end

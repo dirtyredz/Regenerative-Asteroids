@@ -87,7 +87,7 @@ function SectorTemplate.generate(player, seed, x, y)
 
     --Begin Added by RegenerativeAsteroids - Dirtyredz
     if RegenerativeAsteroidsConfig.NeutralZone then
-      Sector():addScript("data/scripts/sector/RegenerativeAsteroidsScript.lua")
+      Sector():addScript("mods/RegenerativeAsteroids/scripts/sector/RegenerativeAsteroidsScript.lua")
     end
     --End Added by RegenerativeAsteroids - Dirtyredz
 

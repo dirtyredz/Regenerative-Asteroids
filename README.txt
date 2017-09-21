@@ -23,7 +23,7 @@ Will set a sector to maintain a specific amount of minable asteroids. This will 
 [center][b]INSTALL[/b][/center]
 [hr]
 
-simply copy the data folder inside your steam avorion folder (steam local folder) usually C:\Program Files (x86)\Steam\steamapps\common\Avorion
+simply copy the data and mods folders inside your steam avorion folder (steam local folder) usually C:\Program Files (x86)\Steam\steamapps\common\Avorion
 
 [center][size=14pt]THIS MOD IS REQUIRED ONLY TO BE INSTALLED ON THE SERVER NO CLIENT INSTALLATION IS REQUIRED[/size][/center]
 
@@ -52,13 +52,14 @@ All messages except for those alerting the player to the sector will be sent to 
 [hr]
 https://github.com/dirtyredz/Regenerative-Asteroids
 
-[b]TODO[/b]
-[hr]
-
-
 
 [center][b]Downloads[/b][/center]
 [hr]
+Version 1.4.1
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.1/Regenerative-Asteroids-v1.4.1.zip]Regenerative Asteroids v1.4.1[/url]
+
+Past Download Links:
+[spoiler]
 Version 1.4.0
 [url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.0/Regenerative-Asteroids-v1.4.0.zip]Regenerative Asteroids v1.4.0[/url]
 
@@ -81,8 +82,6 @@ Version 1.2.0
 [url=https://www.dropbox.com/s/duj9tqxrjadyyl7/Regenerative-Asteroids-V1.2.0.zip?dl=0]Regenerative Asteroids v1.2.0[/url]
 [url=https://www.dropbox.com/s/180qlb9sx48xk61/Uninstall-Regenerative-Asteroids-V1.2.0.zip?dl=0]Uninstall v1.2.0[/url]
 
-Past Download Links:
-[spoiler]
 Version 1.2.1
 [url=https://www.dropbox.com/s/uev023id2xpnhqp/Regenerative-Asteroids-V1.2.1.zip?dl=0]Regenerative Asteroids v1.2.1[/url]
 
@@ -98,6 +97,12 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.4.0
+-Moved most file to mods/ directory in preperation for steam support
+-Added Loglevel
+-Fixed custom nsming on newly generated sectors
+
+[spoiler]
 Version 1.4.0
 -Moved configuration to /configs/
 
@@ -146,7 +151,78 @@ Version 1.1.0
 -Added config check to SectorSpecifics.lua for configuration options
 -Updated Uninstall to contain original neutralzone.lua(patch 0.11.0.7844) and sectorspecifics.lua(patch 0.11.0.7844)
 -Added readme.txt to Uninstall zip
+[/spoiler]
 
+[b][size=24pt]DONATE[/size][/b]
+[hr]
+Wanna show your appreciation?
+http://dirtyredz.com/donate
 
+Become a patron:
+https://www.patreon.com/Dirtyredz
 
-Let me know what you guys think.
+[b][size=24pt]MY OTHER MODS[/size][/b]
+[hr]
+[spoiler]
+[b]DSM[/b]
+-A project dedicated to server deployment, management, and exposing features to a web interface.
+http://www.avorion.net/forum/index.php/topic,3507.0.html
+
+[b]Reganerative Asteroid Fields[/b]
+-Regenerates designated sectors, and randomly appearing sectors, of minable asteroids.
+http://www.avorion.net/forum/index.php/topic,3055.0.html
+
+[b]MoveUI[/b]
+-A mod for adding custom UIs to the screen.
+http://www.avorion.net/forum/index.php/topic,3834.0.html
+
+[b]Subspace Corridor[/b]
+-A modders recources, designed to mimick /teleport, due to server commands not being available through the api.
+http://www.avorion.net/forum/index.php/topic,3148.0.html
+
+[b]Dirty Buoy's[/b]
+-Allows players to spawn Navigational and Sentry Buoys, More to come soon.
+-These buoys have unique features players cant get in normal game play, for example: Navigational buoys are invincible and cannot be moved. A great way to mark a distance wreckage or minarable rich asteroid field.
+--Rusty Servers only at the moment.
+
+[b]LogLevels[/b]
+-LogLevels gives modders the ability to set levels for there print functions.
+-Aswell as allowing server owners to clean up there consoles, making it easier to read.
+http://www.avorion.net/forum/index.php/topic,3799.0.html
+
+[b]NoNeutralCore[/b]
+-A small script for stopping the creation of neutral zones inside the core.
+http://www.avorion.net/forum/index.php/topic,3472.0.html
+
+[b]DirtyCargoExtender[/b]
+-Extends the cargo hold of any NPC station discovered with low cargo holds.
+--Patreon Members only
+
+[b]DirtySecure[/b]
+-A mod which assigned PVP or PVE sectors based on distance from core.
+-Provides Offline Protection to Players ships.
+-Provides protection for NPC stations.
+--Rusty Servers only at the moment
+
+[b]Reganerative Claimable Asteroids[/b]
+-A mod which respawns claimable asteroids, when theyve been moved or turned into a mine.
+-Also will unclaim or unsell an asteroid after a configured number of days
+-Keeps the galaxy alive, providing claimable asteroids for new players.
+--Rusty Servers only at the moment
+
+[b]Death Info[/b]
+-Used to track cords of a players death point, assigning player values, for other mods to use.
+--Rusty Servers only at the moment.
+
+[b]/Back[/b]
+-A command using DeathInfo and Subspace Corridor, to teleport a players drone BACK to there death point.
+--Rusty Servers only at the moment.
+
+[b]DistCore HUD[/b]
+-Displays distance to the core on the players hud
+--Rusty Servers only at the moment.
+
+Any mod listed as Rusty Servers only, are live and active on the Rusty Servers.
+Want the mod for your server? Lets talk and ill see about releasing the mod to you/public.
+Not all mods on Rusty will remain there, they will eventually be released to the public.
+[/spoiler]
