@@ -52,13 +52,11 @@ All messages except for those alerting the player to the sector will be sent to 
 ___
 https://github.com/dirtyredz/Regenerative-Asteroids
 
-## TODO
-___
-
-
-
 ## Downloads
 ___
+__Version 1.4.2__
+[Regenerative Asteroids v1.4.2](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.2/Regenerative-Asteroids-v1.4.2.zip)
+
 __Version 1.4.1__
 [Regenerative Asteroids v1.4.1](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.1/Regenerative-Asteroids-v1.4.1.zip)
 
@@ -87,11 +85,9 @@ __Version 1.2.0__
 [Regenerative Asteroids v1.2.0](https://www.dropbox.com/s/duj9tqxrjadyyl7/Regenerative-Asteroids-V1.2.0.zip?dl=0)
 [Uninstall v1.2.0](https://www.dropbox.com/s/180qlb9sx48xk61/Uninstall-Regenerative-Asteroids-V1.2.0.zip?dl=0)
 
-
 __Version 1.1.0__
 [Regenerative Asteroids v1.1.0](https://www.dropbox.com/s/pfqbv8ltoyvd47y/Regenerative-Asteroids-V1.1.0.zip?dl=0)
 [Uninstall v1.1.0](https://www.dropbox.com/s/ducto7s4qxr5uvf/Uninstall-Regenerative-Asteroids-V1.1.0.zip?dl=0)
-
 
 __Version 1.0.0__
 [Regenerative Asteroids v1.0.0](https://www.dropbox.com/s/zqhb99t73arpehi/RegenerativeAsteroids.rar?dl=0)
@@ -101,7 +97,13 @@ __Version 1.0.0__
 
 ## Changelog
 ___
-__Version 1.4.0__
+__Version 1.4.2__
+	--Added missing loglevel commands
+	--Redid entire config file.
+	--Updated all files to match new config file settup
+	--Removed NeutralZone option, and neutralzone file.
+
+__Version 1.4.1__
 -Moved most file to mods/ directory in preperation for steam support
 -Added Loglevel
 -Fixed custom nsming on newly generated sectors
@@ -220,10 +222,6 @@ __Death Info__
 
 __/Back__
 -A command using DeathInfo and Subspace Corridor, to teleport a players drone BACK to there death point.
---Rusty Servers only at the moment.
-
-__DistCore HUD__
--Displays distance to the core on the players hud
 --Rusty Servers only at the moment.
 
 Any mod listed as Rusty Servers only, are live and active on the Rusty Servers.

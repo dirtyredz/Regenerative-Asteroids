@@ -9,31 +9,24 @@ package.path = package.path .. ";mods/LogLevels/scripts/lib/?.lua"
 require("PrintLog")
 local logLevels = require("LogLevels")
 
-package.path = package.path .. ";data/scripts/lib/?.lua"
-package.path = package.path .. ";mods/RegenerativeAsteroids/config/?.lua"
-
 -- namespace RegenerativeAsteroidsScript
 RegenerativeAsteroidsScript = {}
 
-
--- Dirtyredz | David McClain
-function RegenerativeAsteroidsScript.print(...)
-  local args = table.pack(...)
-  if args[1] ~= nil then
-    args[1] = RegenerativeAsteroidsModInfo.ModPrefix .. RegenerativeAsteroidsModInfo.Version .. args[1]
-    print(table.unpack(args))
-  else
-    print(RegenerativeAsteroidsModInfo.ModPrefix .. RegenerativeAsteroidsModInfo.Version .. " nil")
-  end
-end
-
 if onServer() then
 
+  package.path = package.path .. ";data/scripts/lib/?.lua"
   SectorGenerator = require ("SectorGenerator")
   Placer = require ("placer")
   require ("randomext")
   require ("stringutility")
-  require("RegenerativeAsteroidsConfig")
+
+  --For EXTERNAL configuration files
+  exsist, RegenerativeAsteroidsConfig = pcall(require, 'mods.RegenerativeAsteroids.config.RegenerativeAsteroidsConfig')
+  RegenerativeAsteroidsScript.announcment = RegenerativeAsteroidsConfig.announcment or true
+  RegenerativeAsteroidsScript.RepeatedSectorEntryAlerts = RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts or false
+  RegenerativeAsteroidsScript.MinableAsteroidLimit = RegenerativeAsteroidsConfig.MinableAsteroidLimit or 50
+  RegenerativeAsteroidsScript.MaintainNaturalAsteroidLimit = RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit or true
+  RegenerativeAsteroidsScript.print = RegenerativeAsteroidsConfig.print or function (...) print(...) end
 
   function RegenerativeAsteroidsScript.initialize()
     Sector():registerCallback("onPlayerEntered", "onPlayerEntered")
@@ -52,14 +45,12 @@ if onServer() then
     if SectorVisited == nil then
       VisitedBool = "false"
     end
-    if RegenerativeAsteroidsConfig.announcment == true and VisitedBool == "false" then
+    if RegenerativeAsteroidsScript.announcment == true and VisitedBool == "false" then
       Sector:setValue("RegenerativeAsteroidsVisited",true)
       Sector:broadcastChatMessage("Server", 0, SectorDiscovered)
-      if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print(player.name.." has discovered a regenerative asteroid field at sector ",xy,logLevels.info)
-      end
+      RegenerativeAsteroidsScript.print(player.name.." has discovered a regenerative asteroid field at sector ",xy,logLevels.info)
     end
-    if RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts == true then
+    if RegenerativeAsteroidsScript.RepeatedSectorEntryAlerts == true then
       Sector:broadcastChatMessage("Server", 0, SectorReVisit)
     end
     player:sendChatMessage("Server", 3, msg)
@@ -80,7 +71,7 @@ if onServer() then
 
   function RegenerativeAsteroidsScript.SetSecotrLimit(Num)
     if Num == nil then
-      Num = RegenerativeAsteroidsConfig.MinableAsteroidLimit
+      Num = RegenerativeAsteroidsScript.MinableAsteroidLimit
     end
 
     Sector():setValue("RegenerativeAsteroids",tonumber(Num))
@@ -103,9 +94,7 @@ if onServer() then
   			MinableAsteroids = MinableAsteroids + 1
   		end
   	end
-    if RegenerativeAsteroidsModInfo.Debug then
-      RegenerativeAsteroidsScript.print("Found "..MinableAsteroids.." minable asteroids at sector ",xy,logLevels.info)
-    end
+    RegenerativeAsteroidsScript.print("Found "..MinableAsteroids.." minable asteroids at sector ",xy,logLevels.debug)
     return MinableAsteroids
   end
 
@@ -119,23 +108,14 @@ if onServer() then
 
     if RegenerativeAsteroidsScript.SectorHasLimit() then
       MaxMinable = RegenerativeAsteroidsScript.GetSectorLimit()
-
-      if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print("Using sector asteroid limit value: "..MaxMinable..", for sector ",xy,logLevels.info)
-      end
-    elseif RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit then
+      RegenerativeAsteroidsScript.print("Using sector asteroid limit value: "..MaxMinable..", for sector ",xy,logLevels.debug)
+    elseif RegenerativeAsteroidsScript.MaintainNaturalAsteroidLimit then
       MaxMinable = CurrentMinableAsteroids
       RegenerativeAsteroidsScript.SetSecotrLimit(CurrentMinableAsteroids)
-
-      if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print("Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)",logLevels.info)
-      end
+      RegenerativeAsteroidsScript.print("Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)",logLevels.info)
     else
-      MaxMinable = RegenerativeAsteroidsConfig.MinableAsteroidLimit
-
-      if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print("Using config option MinableAsteroidLimit: "..MaxMinable..", for sector ",xy,logLevels.info)
-      end
+      MaxMinable = RegenerativeAsteroidsScript.MinableAsteroidLimit
+      RegenerativeAsteroidsScript.print("Using config option MinableAsteroidLimit: "..MaxMinable..", for sector ",xy,logLevels.debug)
     end
 
     if CurrentMinableAsteroids < MaxMinable then
@@ -145,9 +125,9 @@ if onServer() then
       local asteroid = generator:createAsteroidFieldEx(AsteroidsToGenerate * 2,1800 * size, 5.0, 25.0, 1, 0.5)
 
       Placer.resolveIntersections()
-      if RegenerativeAsteroidsModInfo.Debug then
-        RegenerativeAsteroidsScript.print("Created "..MaxMinable.." Minable Asteroids in sector ",xy,logLevels.info)
-      end
+      RegenerativeAsteroidsScript.print("Created "..MaxMinable.." Minable Asteroids in sector ",xy,logLevels.info)
     end
   end
 end
+
+return RegenerativeAsteroidsScript

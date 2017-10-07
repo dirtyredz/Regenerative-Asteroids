@@ -52,14 +52,16 @@ All messages except for those alerting the player to the sector will be sent to 
 [hr]
 https://github.com/dirtyredz/Regenerative-Asteroids
 
-
 [center][b]Downloads[/b][/center]
 [hr]
-Version 1.4.1
-[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.1/Regenerative-Asteroids-v1.4.1.zip]Regenerative Asteroids v1.4.1[/url]
+Version 1.4.2
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.2/Regenerative-Asteroids-v1.4.2.zip]Regenerative Asteroids v1.4.2[/url]
 
 Past Download Links:
 [spoiler]
+Version 1.4.1
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.1/Regenerative-Asteroids-v1.4.1.zip]Regenerative Asteroids v1.4.1[/url]
+
 Version 1.4.0
 [url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.0/Regenerative-Asteroids-v1.4.0.zip]Regenerative Asteroids v1.4.0[/url]
 
@@ -97,12 +99,18 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
-Version 1.4.0
+Version 1.4.2
+	--Added missing loglevel commands
+	--Redid entire config file.
+	--Updated all files to match new config file settup
+	--Removed NeutralZone option, and neutralzone file.
+
+[spoiler]
+Version 1.4.1
 -Moved most file to mods/ directory in preperation for steam support
 -Added Loglevel
 -Fixed custom nsming on newly generated sectors
 
-[spoiler]
 Version 1.4.0
 -Moved configuration to /configs/
 
@@ -216,10 +224,6 @@ http://www.avorion.net/forum/index.php/topic,3472.0.html
 
 [b]/Back[/b]
 -A command using DeathInfo and Subspace Corridor, to teleport a players drone BACK to there death point.
---Rusty Servers only at the moment.
-
-[b]DistCore HUD[/b]
--Displays distance to the core on the players hud
 --Rusty Servers only at the moment.
 
 Any mod listed as Rusty Servers only, are live and active on the Rusty Servers.
