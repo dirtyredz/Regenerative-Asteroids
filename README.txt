@@ -54,11 +54,14 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 [center][b]Downloads[/b][/center]
 [hr]
-Version 1.4.2
-[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.2/Regenerative-Asteroids-v1.4.2.zip]Regenerative Asteroids v1.4.2[/url]
+Version 1.4.3
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.3/Regenerative-Asteroids-v1.4.3.zip]Regenerative Asteroids v1.4.2[/url]
 
 Past Download Links:
 [spoiler]
+Version 1.4.2
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.2/Regenerative-Asteroids-v1.4.2.zip]Regenerative Asteroids v1.4.2[/url]
+
 Version 1.4.1
 [url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.1/Regenerative-Asteroids-v1.4.1.zip]Regenerative Asteroids v1.4.1[/url]
 
@@ -99,6 +102,9 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.4.3
+	--Updated sectorspecifics.lua
+
 Version 1.4.2
 	--Added missing loglevel commands
 	--Redid entire config file.

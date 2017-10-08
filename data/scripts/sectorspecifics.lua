@@ -4,6 +4,7 @@ package.path = package.path .. ";data/scripts/?.lua"
 package.path = package.path .. ";data/scripts/sectors/?.lua"
 package.path = package.path .. ";?.lua"
 package.path = package.path .. ";?"
+
 require ("randomext")
 FactionsMap = require ("factionsmap")
 PassageMap = require ("passagemap")
@@ -65,14 +66,13 @@ function SectorSpecifics:addTemplates()
     self:addTemplate("sectors/piratefight")
     self:addTemplate("sectors/piratestation")
 
-    self:addTemplate("sectors/asteroidfield")
-
     --Begin Added by RegenerativeAsteroids - Dirtyredz
     if RegenAsteroidsSectorGenerator == true then
       self:addTemplate("mods/RegenerativeAsteroids/scripts/sectors/RegenerativeAsteroids")
     end
     --End Added by RegenerativeAsteroids - Dirtyredz
 
+    self:addTemplate("sectors/asteroidfield")
     self:addTemplate("sectors/containerfield")
     self:addTemplate("sectors/smallasteroidfield")
     self:addTemplate("sectors/wreckagefield")
@@ -190,7 +190,7 @@ function SectorSpecifics:initialize(x, y, serverSeed)
     self.blocked = false
     self.gates = false
     self.dustyness = 0
-    self.name = x .. " " .. y
+    self.name = x .. " : " .. y
 
     local home = false
     self.regular, self.offgrid, self.blocked, home, self.dustyness = self:determineContent(x, y, serverSeed)
@@ -262,6 +262,7 @@ function SectorSpecifics:initialize(x, y, serverSeed)
         end
 
         local i = selectByWeight(rand, templatesByWeight)
+
         self.generationTemplate = self.templates[i]
 
         --Begin Added by RegenerativeAsteroids - Dirtyredz
@@ -269,6 +270,7 @@ function SectorSpecifics:initialize(x, y, serverSeed)
           self.name = self.generationTemplate.CustomName
         end
         --End Added by RegenerativeAsteroids - Dirtyredz
+
     end
 end
 
@@ -278,6 +280,185 @@ function SectorSpecifics:getScript()
     end
 
     return ""
+end
+
+function SectorSpecifics:generatePlanets()
+    local seed = getSectorSeed(self.coordinates.x, self.coordinates.y + 2)
+
+    local rand = Random(seed)
+    local planets = {}
+
+    if self.coordinates.x == 0 and self.coordinates.y == 0 then
+        table.insert(planets, 1, SectorSpecifics.generateBlackHole(rand))
+    else
+        if rand:test(0.6) then
+            table.insert(planets, 1, SectorSpecifics.generatePlanet(planets, rand))
+        end
+    end
+
+    return unpack(planets)
+end
+
+function SectorSpecifics.getPlanetPosition(random, size)
+    local minDist = (size / 2 + size / 5)
+    local maxDist = size * 2
+
+    return random:getDirection() * random:getFloat(minDist, maxDist)
+end
+
+function SectorSpecifics.generatePlanet(planets, random)
+    local planet = PlanetSpecifics()
+
+    planet.type = random:getInt(0, PlanetType.NumPlanetTypes - 1)
+    while planet.type == PlanetType.BlackHole do
+        planet.type = random:getInt(0, PlanetType.NumPlanetTypes - 1)
+    end
+
+    local moon = false
+
+    if planet.type == PlanetType.Terrestrial then
+        planet.atmosphere = true
+        planet.clouds = true
+        moon = random:getBool()
+        planet.habitated = random:getBool()
+        planet.ring = random:getBool()
+        planet.size = random:getFloat(10, 14)
+
+    elseif planet.type == PlanetType.Rocky then
+        planet.atmosphere = random:getBool()
+        planet.clouds = random:getBool()
+        planet.habitated = random:getBool()
+        moon = random:getBool()
+        planet.ring = random:getBool()
+        planet.size = random:getFloat(2, 10)
+
+    elseif planet.type == PlanetType.GasGiant then
+        planet.atmosphere = true
+        planet.clouds = false
+        planet.habitated = false
+        moon = random:getBool()
+        planet.ring = random:getBool()
+        planet.size = random:getFloat(50, 140)
+
+    elseif planet.type == PlanetType.Smooth then
+        planet.atmosphere = random:getBool()
+        planet.clouds = random:getBool()
+        planet.habitated = random:getBool()
+        moon = random:getBool()
+        planet.ring = random:getBool()
+        planet.size = random:getFloat(2, 8)
+
+    elseif planet.type == PlanetType.Moon then
+        planet.atmosphere = false
+        planet.clouds = false
+        planet.habitated = random:getBool()
+        planet.ring = false
+        planet.size = random:getFloat(0.5, 4)
+
+    elseif planet.type == PlanetType.Volcanic then
+        planet.atmosphere = true
+        planet.clouds = false
+        planet.habitated = false
+        moon = random:getBool()
+        planet.ring = random:getBool()
+        planet.size = random:getFloat(9, 15)
+
+    elseif planet.type == PlanetType.BlackHole then
+        planet.atmosphere = true
+        planet.clouds = false
+        planet.habitated = false
+        moon = false
+        planet.ring = false
+        planet.size = random:getFloat(0.5, 2)
+    end
+
+    planet.position = SectorSpecifics.getPlanetPosition(random, planet.size)
+
+    local types = {}
+    table.insert(types, 0)
+    if moon then table.insert(types, 1) end
+    if planet.ring then table.insert(types, 2) end
+
+    local orbitType = types[random:getInt(1, #types)]
+
+    if orbitType == 1 then -- moons
+        planet.ring = false
+        local moonSpecs = SectorSpecifics.generateMoon(random)
+
+        -- position the moon
+        local dir = normalize(moonSpecs.position)
+        moonSpecs.position = planet.position + dir * (planet.size + moonSpecs.size) * 1.25
+
+        -- if the camera would be inside the moon, move the moon away from the camera
+        if length(moonSpecs.position) < (moonSpecs.size / 2) + (moonSpecs.size / 5) then
+            -- moon is too near, move it away from the camera
+            moonSpecs.position = moonSpecs.position + dir * (moonSpecs.size / 2)
+        end
+
+        table.insert(planets, moonSpecs)
+
+    elseif orbitType == 2 then -- asteroid ring
+        planet.ring = true
+    elseif orbitType == 0 then -- no orbit
+        planet.ring = false
+    end
+
+    return planet
+end
+
+function SectorSpecifics.generateMoon(random)
+    local moon = PlanetSpecifics()
+
+    local moonType = random:getInt(0, MoonType.NumMoonTypes - 1)
+    moon.size = random:getFloat(2, 8)
+
+    if moonType == MoonType.Rocky then
+        moon.atmosphere = random:getBool()
+        moon.clouds = random:getBool()
+        moon.habitated = random:getBool()
+
+        moon.type = PlanetType.Rocky
+
+    elseif moonType == MoonType.Smooth then
+        moon.atmosphere = random:getBool()
+        moon.clouds = random:getBool()
+        moon.habitated = random:getBool()
+
+        moon.type = PlanetType.Smooth
+
+    elseif moonType == MoonType.Moon then
+        moon.atmosphere = false
+        moon.clouds = false
+        moon.habitated = random:getBool()
+
+        moon.type = PlanetType.Moon
+
+    elseif moonType == MoonType.Volcanic then
+        moon.atmosphere = true
+        moon.clouds = false
+        moon.habitated = false
+
+        moon.type = PlanetType.Volcanic
+    end
+
+    moon.position = SectorSpecifics.getPlanetPosition(random, moon.size);
+
+    return moon
+end
+
+function SectorSpecifics.generateBlackHole(random)
+    local hole = PlanetSpecifics()
+
+    hole.type = PlanetType.BlackHole
+
+    hole.atmosphere = true
+    hole.clouds = false
+    hole.habitated = false
+    hole.ring = true
+    hole.size = random:getFloat(0.5, 2)
+    hole.position = SectorSpecifics.getPlanetPosition(random, hole.size)
+
+    return hole
 end
 
 function SectorSpecifics.getShuffledCoordinates(random, cx, cy, dmin, dmax)
