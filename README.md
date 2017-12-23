@@ -54,7 +54,9 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 ## Downloads
 ___
-__Version 1.4.4__
+__Version 1.4.5__
+[Regenerative Asteroids v1.4.5](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.5/Regenerative-Asteroids-v1.4.5.zip)
+
 [Regenerative Asteroids v1.4.4](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.4/Regenerative-Asteroids-v1.4.4.zip)
 
 __Version 1.4.3__
@@ -103,6 +105,9 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.4.5__
+	--Hotfix, dont delete claimable asteroids.
+
 __Version 1.4.4__
 	--Added MaxNonMinable config option, Deletes any non-minable asteroids past the config option default 1500.
 

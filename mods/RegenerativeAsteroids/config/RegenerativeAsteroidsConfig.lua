@@ -1,7 +1,7 @@
 local RegenerativeAsteroidsConfig = {}
 
 RegenerativeAsteroidsConfig.Author = "Dirtyredz"
-RegenerativeAsteroidsConfig.Version = "[1.4.4]"
+RegenerativeAsteroidsConfig.Version = "[1.4.5]"
 RegenerativeAsteroidsConfig.ModName = "[RegenerativeAsteroids]"
 
 RegenerativeAsteroidsConfig.frequency = 300; -- 0 to 1000, probability of this sector to appear. Keep around 300 to be average with other similiar sectors.

@@ -109,9 +109,11 @@ if onServer() then
       local Asteroids = {Sector:getEntitiesByType(EntityType.Asteroid)}
 
       for Iter,Asteroid in pairs(Asteroids) do
-          local Roid = Asteroid:getMineableResources()
-          if Roid == nil or Roid == 0 then
-              NonMinableAsteroids = NonMinableAsteroids + 1
+          if not Asteroid:hasComponent(ComponentType.FactionNotifier) and not Asteroid:hasComponent(ComponentType.Owner) then
+              local Roid = Asteroid:getMineableResources()
+              if Roid == nil or Roid == 0 then
+                  NonMinableAsteroids = NonMinableAsteroids + 1
+              end
           end
       end
     RegenerativeAsteroidsScript.print("Found "..NonMinableAsteroids.." non-minable asteroids at sector ",xy,logLevels.debug)
@@ -164,10 +166,12 @@ if onServer() then
         local Asteroids = {Sector:getEntitiesByType(EntityType.Asteroid)}
 
         for Iter,Asteroid in pairs(Asteroids) do
-            local Roid = Asteroid:getMineableResources()
-            if Roid == nil or Roid == 0 then
-                NonMinable = NonMinable - 1
-                Sector:deleteEntity(Asteroid)
+            if not Asteroid:hasComponent(ComponentType.FactionNotifier) and not Asteroid:hasComponent(ComponentType.Owner) then
+                local Roid = Asteroid:getMineableResources()
+                if Roid == nil or Roid == 0 then
+                    NonMinable = NonMinable - 1
+                    Sector:deleteEntity(Asteroid)
+                end
             end
             if NonMinable < RegenerativeAsteroidsScript.MaxNonMinableAsteroids then break end
         end
