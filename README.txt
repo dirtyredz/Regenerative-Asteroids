@@ -23,14 +23,14 @@ Will set a sector to maintain a specific amount of minable asteroids. This will 
 [center][b]INSTALL[/b][/center]
 [hr]
 
-simply copy the data and mods folders inside your steam avorion folder (steam local folder) usually C:\Program Files (x86)\Steam\steamapps\common\Avorion
+simply copy the DATA and MODS folders inside your steam avorion folder (steam local folder) usually C:\Program Files (x86)\Steam\steamapps\common\Avorion
 
 [center][size=14pt]THIS MOD IS REQUIRED ONLY TO BE INSTALLED ON THE SERVER NO CLIENT INSTALLATION IS REQUIRED[/size][/center]
 
 [center][b]UNINSTALL[/b][/center]
 [hr]
 
-[b]STEP 1[/b]: Replace sectorspecifics.lua and neutralzone.lua with orignial.
+[b]STEP 1[/b]: Replace sectorspecifics.lua with orignial.
 
 [b]STEP 2[/b]: Delete all files associated with this mod.
 	After which you need to delete every file installed by this mod (except sectorscripts.lua which needs to be modified)
@@ -54,11 +54,14 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 [center][b]Downloads[/b][/center]
 [hr]
-Version 1.4.3
-[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.3/Regenerative-Asteroids-v1.4.3.zip]Regenerative Asteroids v1.4.2[/url]
+Version 1.4.4
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.4/Regenerative-Asteroids-v1.4.4.zip]Regenerative Asteroids v1.4.4[/url]
 
 Past Download Links:
 [spoiler]
+Version 1.4.3
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.3/Regenerative-Asteroids-v1.4.3.zip]Regenerative Asteroids v1.4.3[/url]
+
 Version 1.4.2
 [url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.2/Regenerative-Asteroids-v1.4.2.zip]Regenerative Asteroids v1.4.2[/url]
 
@@ -102,6 +105,9 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.4.4
+	--Added MaxNonMinable config option, Deletes any non-minable asteroids past the config option default 1500.
+
 Version 1.4.3
 	--Updated sectorspecifics.lua
 

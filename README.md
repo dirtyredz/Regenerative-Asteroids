@@ -23,14 +23,14 @@ Will set a sector to maintain a specific amount of minable asteroids. This will 
 ## INSTALL
 ___
 
-simply copy the data and mods folders inside your steam avorion folder (steam local folder) usually C:\Program Files (x86)\Steam\steamapps\common\Avorion
+simply copy the DATA and MODS folders inside your steam avorion folder (steam local folder) usually C:\Program Files (x86)\Steam\steamapps\common\Avorion
 
 ### THIS MOD IS REQUIRED ONLY TO BE INSTALLED ON THE SERVER NO CLIENT INSTALLATION IS REQUIRED
 
 ## UNINSTALL
 ___
 
-__STEP 1__: Replace sectorspecifics.lua and neutralzone.lua with orignial.
+__STEP 1__: Replace sectorspecifics.lua with orignial.
 
 __STEP 2__: Delete all files associated with this mod.
 	After which you need to delete every file installed by this mod (except sectorscripts.lua which needs to be modified)
@@ -54,6 +54,9 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 ## Downloads
 ___
+__Version 1.4.4__
+[Regenerative Asteroids v1.4.4](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.4/Regenerative-Asteroids-v1.4.4.zip)
+
 __Version 1.4.3__
 [Regenerative Asteroids v1.4.3](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.3/Regenerative-Asteroids-v1.4.3.zip)
 
@@ -100,6 +103,9 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.4.4__
+	--Added MaxNonMinable config option, Deletes any non-minable asteroids past the config option default 1500.
+
 __Version 1.4.3__
 	--Updated sectorspecifics.lua
 

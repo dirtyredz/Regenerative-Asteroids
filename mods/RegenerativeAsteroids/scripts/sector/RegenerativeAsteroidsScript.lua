@@ -6,8 +6,7 @@ if onClient() then return end
 
 --Custom logging
 package.path = package.path .. ";mods/LogLevels/scripts/lib/?.lua"
-require("PrintLog")
-local logLevels = require("LogLevels")
+local logLevels = require("PrintLog")
 
 -- namespace RegenerativeAsteroidsScript
 RegenerativeAsteroidsScript = {}
@@ -26,6 +25,7 @@ if onServer() then
   RegenerativeAsteroidsScript.RepeatedSectorEntryAlerts = RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts or false
   RegenerativeAsteroidsScript.MinableAsteroidLimit = RegenerativeAsteroidsConfig.MinableAsteroidLimit or 50
   RegenerativeAsteroidsScript.MaintainNaturalAsteroidLimit = RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit or true
+  RegenerativeAsteroidsScript.MaxNonMinableAsteroids = RegenerativeAsteroidsConfig.MaxNonMinableAsteroids or 1500
   RegenerativeAsteroidsScript.print = RegenerativeAsteroidsConfig.print or function (...) print(...) end
 
   function RegenerativeAsteroidsScript.initialize()
@@ -98,6 +98,26 @@ if onServer() then
     return MinableAsteroids
   end
 
+  function RegenerativeAsteroidsScript.GetNumberNonMinableAsteroids()
+    local NonMinableAsteroids = 0
+    local Sector = Sector()
+    local x, y = Sector:getCoordinates()
+    local xy = "\\s("..x..", "..y..")"
+      --------
+      -- loop over all the Non mineable asteroids.
+      --------
+      local Asteroids = {Sector:getEntitiesByType(EntityType.Asteroid)}
+
+      for Iter,Asteroid in pairs(Asteroids) do
+          local Roid = Asteroid:getMineableResources()
+          if Roid == nil or Roid == 0 then
+              NonMinableAsteroids = NonMinableAsteroids + 1
+          end
+      end
+    RegenerativeAsteroidsScript.print("Found "..NonMinableAsteroids.." non-minable asteroids at sector ",xy,logLevels.debug)
+    return NonMinableAsteroids
+  end
+
   function RegenerativeAsteroidsScript.RegenerateAsteroids()
     local Sector = Sector()
     local x, y = Sector:getCoordinates()
@@ -126,6 +146,33 @@ if onServer() then
 
       Placer.resolveIntersections()
       RegenerativeAsteroidsScript.print("Created "..MaxMinable.." Minable Asteroids in sector ",xy,logLevels.info)
+    end
+
+    if CurrentMinableAsteroids < MaxMinable then
+      local AsteroidsToGenerate = MaxMinable - CurrentMinableAsteroids
+      local generator = SectorGenerator(Sector:getCoordinates())
+      local size = getFloat(0.5, 1.0)
+      local asteroid = generator:createAsteroidFieldEx(AsteroidsToGenerate * 2,1800 * size, 5.0, 25.0, 1, 0.5)
+
+      Placer.resolveIntersections()
+      RegenerativeAsteroidsScript.print("Created "..MaxMinable.." Minable Asteroids in sector ",xy,logLevels.info)
+    end
+
+    local NonMinable = RegenerativeAsteroidsScript.GetNumberNonMinableAsteroids()
+    local NonMinableNow = NonMinable
+    if NonMinable > RegenerativeAsteroidsScript.MaxNonMinableAsteroids then
+        local Asteroids = {Sector:getEntitiesByType(EntityType.Asteroid)}
+
+        for Iter,Asteroid in pairs(Asteroids) do
+            local Roid = Asteroid:getMineableResources()
+            if Roid == nil or Roid == 0 then
+                NonMinable = NonMinable - 1
+                Sector:deleteEntity(Asteroid)
+            end
+            if NonMinable < RegenerativeAsteroidsScript.MaxNonMinableAsteroids then break end
+        end
+        local Removed = NonMinableNow - NonMinable
+        RegenerativeAsteroidsScript.print("Removed "..Removed.." excess Non-Minable Asteroids in sector ",xy,logLevels.info)
     end
   end
 end
