@@ -54,6 +54,9 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 ## Downloads
 ___
+__Version 1.5.0__
+[Regenerative Asteroids v1.5.0](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.5.0/Regenerative-Asteroids-v1.5.0.zip)
+
 __Version 1.4.5__
 [Regenerative Asteroids v1.4.5](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/1.4.5/Regenerative-Asteroids-v1.4.5.zip)
 
@@ -105,6 +108,13 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.5.0__
+	--Updated Loglevels
+	--Added 3 new config options to control the size of asteroids
+	--Fixed bug where MaintainNaturalAsteroidLimit was always set
+	--Fixed bug where server announcement wasnt working.
+	--Fixed bug where the asteroids were generating twice.
+
 __Version 1.4.5__
 	--Hotfix, dont delete claimable asteroids.
 

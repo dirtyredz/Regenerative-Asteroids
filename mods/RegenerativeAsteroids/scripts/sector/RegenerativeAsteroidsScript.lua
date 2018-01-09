@@ -21,12 +21,22 @@ if onServer() then
 
   --For EXTERNAL configuration files
   exsist, RegenerativeAsteroidsConfig = pcall(require, 'mods.RegenerativeAsteroids.config.RegenerativeAsteroidsConfig')
-  RegenerativeAsteroidsScript.announcment = RegenerativeAsteroidsConfig.announcment or true
-  RegenerativeAsteroidsScript.RepeatedSectorEntryAlerts = RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts or false
-  RegenerativeAsteroidsScript.MinableAsteroidLimit = RegenerativeAsteroidsConfig.MinableAsteroidLimit or 50
-  RegenerativeAsteroidsScript.MaintainNaturalAsteroidLimit = RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit or true
-  RegenerativeAsteroidsScript.MaxNonMinableAsteroids = RegenerativeAsteroidsConfig.MaxNonMinableAsteroids or 1500
-  RegenerativeAsteroidsScript.print = RegenerativeAsteroidsConfig.print or function (...) print(...) end
+
+    if not exsist then
+      local msg = RegenerativeAsteroidsConfig
+      RegenerativeAsteroidsConfig = {}
+      RegenerativeAsteroidsConfig.announcment = true
+      RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts = false
+      RegenerativeAsteroidsConfig.MinableAsteroidLimit = 50
+      RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit = true
+      RegenerativeAsteroidsConfig.MaxNonMinableAsteroids = 1500
+      RegenerativeAsteroidsConfig.print = function (...) print(...) end
+      RegenerativeAsteroidsConfig.FieldSize = 1800;
+      RegenerativeAsteroidsConfig.MinAsteroidSize = 5;
+      RegenerativeAsteroidsConfig.MaxAsteroidSize = 25;
+      RegenerativeAsteroidsConfig.print("Failed to initialize config file...",msg,logLevels.fatal)
+    end
+
 
   function RegenerativeAsteroidsScript.initialize()
     Sector():registerCallback("onPlayerEntered", "onPlayerEntered")
@@ -45,12 +55,12 @@ if onServer() then
     if SectorVisited == nil then
       VisitedBool = "false"
     end
-    if RegenerativeAsteroidsScript.announcment == true and VisitedBool == "false" then
+    if RegenerativeAsteroidsConfig.announcment == true and VisitedBool == "false" then
       Sector:setValue("RegenerativeAsteroidsVisited",true)
-      Sector:broadcastChatMessage("Server", 0, SectorDiscovered)
-      RegenerativeAsteroidsScript.print(player.name.." has discovered a regenerative asteroid field at sector ",xy,logLevels.info)
+      Server():broadcastChatMessage("Server", 0, SectorDiscovered)
+      RegenerativeAsteroidsConfig.print(player.name.." has discovered a regenerative asteroid field at sector ",xy,logLevels.info)
     end
-    if RegenerativeAsteroidsScript.RepeatedSectorEntryAlerts == true then
+    if RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts == true then
       Sector:broadcastChatMessage("Server", 0, SectorReVisit)
     end
     player:sendChatMessage("Server", 3, msg)
@@ -71,7 +81,7 @@ if onServer() then
 
   function RegenerativeAsteroidsScript.SetSecotrLimit(Num)
     if Num == nil then
-      Num = RegenerativeAsteroidsScript.MinableAsteroidLimit
+      Num = RegenerativeAsteroidsConfig.MinableAsteroidLimit
     end
 
     Sector():setValue("RegenerativeAsteroids",tonumber(Num))
@@ -94,7 +104,7 @@ if onServer() then
   			MinableAsteroids = MinableAsteroids + 1
   		end
   	end
-    RegenerativeAsteroidsScript.print("Found "..MinableAsteroids.." minable asteroids at sector ",xy,logLevels.debug)
+    RegenerativeAsteroidsConfig.print("Found "..MinableAsteroids.." minable asteroids at sector ",xy,logLevels.debug)
     return MinableAsteroids
   end
 
@@ -116,7 +126,7 @@ if onServer() then
               end
           end
       end
-    RegenerativeAsteroidsScript.print("Found "..NonMinableAsteroids.." non-minable asteroids at sector ",xy,logLevels.debug)
+    RegenerativeAsteroidsConfig.print("Found "..NonMinableAsteroids.." non-minable asteroids at sector ",xy,logLevels.debug)
     return NonMinableAsteroids
   end
 
@@ -130,39 +140,37 @@ if onServer() then
 
     if RegenerativeAsteroidsScript.SectorHasLimit() then
       MaxMinable = RegenerativeAsteroidsScript.GetSectorLimit()
-      RegenerativeAsteroidsScript.print("Using sector asteroid limit value: "..MaxMinable..", for sector ",xy,logLevels.debug)
-    elseif RegenerativeAsteroidsScript.MaintainNaturalAsteroidLimit then
+      RegenerativeAsteroidsConfig.print("Using sector asteroid limit value: "..MaxMinable..", for sector ",xy,logLevels.debug)
+    elseif RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit then
+        RegenerativeAsteroidsConfig.print('MaintainNaturalAsteroidLimit',RegenerativeAsteroidsConfig.MaintainNaturalAsteroidLimit)
       MaxMinable = CurrentMinableAsteroids
       RegenerativeAsteroidsScript.SetSecotrLimit(CurrentMinableAsteroids)
-      RegenerativeAsteroidsScript.print("Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)",logLevels.info)
+      RegenerativeAsteroidsConfig.print("Using MaintainNaturalAsteroidLimit: "..MaxMinable..", for sector "..xy.." (If you wany yo force this region to have more manual set that limit with /regen set x)",logLevels.info)
     else
-      MaxMinable = RegenerativeAsteroidsScript.MinableAsteroidLimit
-      RegenerativeAsteroidsScript.print("Using config option MinableAsteroidLimit: "..MaxMinable..", for sector ",xy,logLevels.debug)
+      MaxMinable = RegenerativeAsteroidsConfig.MinableAsteroidLimit
+      RegenerativeAsteroidsConfig.print("Using config option MinableAsteroidLimit: "..MaxMinable..", for sector ",xy,logLevels.debug)
     end
 
     if CurrentMinableAsteroids < MaxMinable then
       local AsteroidsToGenerate = MaxMinable - CurrentMinableAsteroids
       local generator = SectorGenerator(Sector:getCoordinates())
       local size = getFloat(0.5, 1.0)
-      local asteroid = generator:createAsteroidFieldEx(AsteroidsToGenerate * 2,1800 * size, 5.0, 25.0, 1, 0.5)
+
+      if RegenerativeAsteroidsConfig.MinAsteroidSize >= RegenerativeAsteroidsConfig.MaxAsteroidSize then
+          RegenerativeAsteroidsConfig.print("Config option: MinAsteroidSize, is larger then MaxAsteroidSize, setting both to default values.",logLevels.warning)
+          RegenerativeAsteroidsConfig.MinAsteroidSize = 5;
+          RegenerativeAsteroidsConfig.MaxAsteroidSize = 25;
+      end
+
+      local asteroid = generator:createAsteroidFieldEx(AsteroidsToGenerate * 2,RegenerativeAsteroidsConfig.FieldSize * size, RegenerativeAsteroidsConfig.MinAsteroidSize, RegenerativeAsteroidsConfig.MaxAsteroidSize, 1, 0.5)
 
       Placer.resolveIntersections()
-      RegenerativeAsteroidsScript.print("Created "..MaxMinable.." Minable Asteroids in sector ",xy,logLevels.info)
-    end
-
-    if CurrentMinableAsteroids < MaxMinable then
-      local AsteroidsToGenerate = MaxMinable - CurrentMinableAsteroids
-      local generator = SectorGenerator(Sector:getCoordinates())
-      local size = getFloat(0.5, 1.0)
-      local asteroid = generator:createAsteroidFieldEx(AsteroidsToGenerate * 2,1800 * size, 5.0, 25.0, 1, 0.5)
-
-      Placer.resolveIntersections()
-      RegenerativeAsteroidsScript.print("Created "..MaxMinable.." Minable Asteroids in sector ",xy,logLevels.info)
+      RegenerativeAsteroidsConfig.print("Created "..MaxMinable.." Minable Asteroids in sector ",xy,logLevels.info)
     end
 
     local NonMinable = RegenerativeAsteroidsScript.GetNumberNonMinableAsteroids()
     local NonMinableNow = NonMinable
-    if NonMinable > RegenerativeAsteroidsScript.MaxNonMinableAsteroids then
+    if NonMinable > RegenerativeAsteroidsConfig.MaxNonMinableAsteroids then
         local Asteroids = {Sector:getEntitiesByType(EntityType.Asteroid)}
 
         for Iter,Asteroid in pairs(Asteroids) do
@@ -173,10 +181,10 @@ if onServer() then
                     Sector:deleteEntity(Asteroid)
                 end
             end
-            if NonMinable < RegenerativeAsteroidsScript.MaxNonMinableAsteroids then break end
+            if NonMinable < RegenerativeAsteroidsConfig.MaxNonMinableAsteroids then break end
         end
         local Removed = NonMinableNow - NonMinable
-        RegenerativeAsteroidsScript.print("Removed "..Removed.." excess Non-Minable Asteroids in sector ",xy,logLevels.info)
+        RegenerativeAsteroidsConfig.print("Removed "..Removed.." excess Non-Minable Asteroids in sector ",xy,logLevels.info)
     end
   end
 end

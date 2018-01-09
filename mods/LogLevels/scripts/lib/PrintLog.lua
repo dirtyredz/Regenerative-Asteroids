@@ -7,6 +7,7 @@ print = function(...)
   if Server == nil then
       oldprint(...)
   else
+
     --Get server value set via cmd or server.lua
     local InfoLevel = levels.info or 400
     local ServerSetting = Server():getValue('log_level') or InfoLevel
@@ -59,3 +60,5 @@ print = function(...)
     end
   end
 end
+
+return levels
