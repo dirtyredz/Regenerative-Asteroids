@@ -4,6 +4,7 @@ RegenerativeAsteroidsConfig.Author = "Dirtyredz"
 RegenerativeAsteroidsConfig.Version = "[1.4.5]"
 RegenerativeAsteroidsConfig.ModName = "[RegenerativeAsteroids]"
 
+RegenerativeAsteroidsConfig.RegenerationRate = 600; -- Sector will regenerate every x Seconds. Default: 600 = 10 Minutes
 RegenerativeAsteroidsConfig.frequency = 300; -- 0 to 1000, probability of this sector to appear. Keep around 300 to be average with other similiar sectors.
 RegenerativeAsteroidsConfig.announcment = true; -- true or false, false will disable the server wide message that one of these sectors have been found.
 RegenerativeAsteroidsConfig.MinableAsteroidLimit = 50; -- number of asteroids to maintain in the sector.

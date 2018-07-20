@@ -13,6 +13,8 @@ RegenerativeAsteroidsScript = {}
 
 if onServer() then
 
+  local VALUE_REGEN_TIMER = "RegenerativeAsteroidsScript.timer"
+
   package.path = package.path .. ";data/scripts/lib/?.lua"
   SectorGenerator = require ("SectorGenerator")
   Placer = require ("placer")
@@ -25,6 +27,7 @@ if onServer() then
     if not exsist then
       local msg = RegenerativeAsteroidsConfig
       RegenerativeAsteroidsConfig = {}
+      RegenerativeAsteroidsConfig.RegenerationRate = 600
       RegenerativeAsteroidsConfig.announcment = true
       RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts = false
       RegenerativeAsteroidsConfig.MinableAsteroidLimit = 50
@@ -37,6 +40,17 @@ if onServer() then
       RegenerativeAsteroidsConfig.print("Failed to initialize config file...",msg,logLevels.fatal)
     end
 
+  function RegenerativeAsteroidsScript.updateServer(timeStep)
+    local sector = Sector()
+    local totalStep = sector:getValue(VALUE_REGEN_TIMER)
+    if not totalStep then totalStep = 0 end
+    totalStep = totalStep + timeStep
+    if totalStep >= RegenerativeAsteroidsConfig.RegenerationRate then
+      RegenerativeAsteroidsScript.RegenerateAsteroids()
+    else
+      sector:setValue(VALUE_REGEN_TIMER, totalStep)
+    end
+  end
 
   function RegenerativeAsteroidsScript.initialize()
     Sector():registerCallback("onPlayerEntered", "onPlayerEntered")
@@ -64,7 +78,6 @@ if onServer() then
       Sector:broadcastChatMessage("Server", 0, SectorReVisit)
     end
     player:sendChatMessage("Server", 3, msg)
-    RegenerativeAsteroidsScript.RegenerateAsteroids()
   end
 
   function RegenerativeAsteroidsScript.GetSectorLimit()
@@ -137,6 +150,8 @@ if onServer() then
 
     local MaxMinable = 0
     local CurrentMinableAsteroids = RegenerativeAsteroidsScript.GetNumberMinableAsteroids()
+
+    Sector:setValue(VALUE_REGEN_TIMER, 0)
 
     if RegenerativeAsteroidsScript.SectorHasLimit() then
       MaxMinable = RegenerativeAsteroidsScript.GetSectorLimit()
