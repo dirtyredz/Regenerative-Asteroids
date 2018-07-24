@@ -27,7 +27,7 @@ if onServer() then
     if not exsist then
       local msg = RegenerativeAsteroidsConfig
       RegenerativeAsteroidsConfig = {}
-      RegenerativeAsteroidsConfig.RegenerationRate = 600
+      RegenerativeAsteroidsConfig.RegenerationRate = 3600
       RegenerativeAsteroidsConfig.announcment = true
       RegenerativeAsteroidsConfig.RepeatedSectorEntryAlerts = false
       RegenerativeAsteroidsConfig.MinableAsteroidLimit = 50
@@ -39,6 +39,10 @@ if onServer() then
       RegenerativeAsteroidsConfig.MaxAsteroidSize = 25;
       RegenerativeAsteroidsConfig.print("Failed to initialize config file...",msg,logLevels.fatal)
     end
+
+  function RegenerativeAsteroidsScript.getUpdateInterval()
+    return 1;--Updating once every second is more than enough, no reason to calculate every frame
+  end
 
   function RegenerativeAsteroidsScript.updateServer(timeStep)
     local sector = Sector()
