@@ -5,7 +5,8 @@
   "main": "package.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "node package.js"
+    "package": "node package.js",
+    "release": "release-it 1.5.1"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "archiver": "^3.0.0",
     "del": "^3.0.0",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "release-it": "^8.2.0"
   }
 }
