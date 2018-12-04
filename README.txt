@@ -54,11 +54,14 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 [center][b]Downloads[/b][/center]
 [hr]
-Version 1.5.0
-[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.0/Regenerative-Asteroids-v1.5.0.zip]Regenerative Asteroids v1.5.0[/url]
+Version 1.5.1
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.1/Regenerative-Asteroids-v1.5.1.zip]Regenerative Asteroids v1.5.1[/url]
 
 Past Download Links:
 [spoiler]
+Version 1.5.0
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.0/Regenerative-Asteroids-v1.5.0.zip]Regenerative Asteroids v1.5.0[/url]
+
 Version 1.4.5
 [url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.4.5/Regenerative-Asteroids-v1.4.5.zip]Regenerative Asteroids v1.4.5[/url]
 
@@ -111,6 +114,11 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+
+Version 1.5.1
+	--Updated SectorSpecifics file
+  --Fixed Version info
+
 Version 1.5.0
 	--Updated Loglevels
 	--Added 3 new config options to control the size of asteroids
