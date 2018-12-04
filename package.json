@@ -1,0 +1,25 @@
+{
+  "name": "regenerative-asteroids",
+  "version": "1.5.1",
+  "description": "An Avorion game modification, that adds regenerative sectors.",
+  "main": "package.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "node package.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dirtyredz/Regenerative-Asteroids.git"
+  },
+  "author": "DigitalRedz | David McClain (Dirtyredz)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dirtyredz/Regenerative-Asteroids/issues"
+  },
+  "homepage": "https://github.com/dirtyredz/Regenerative-Asteroids#readme",
+  "devDependencies": {
+    "archiver": "^3.0.0",
+    "del": "^3.0.0",
+    "fs": "0.0.1-security"
+  }
+}
