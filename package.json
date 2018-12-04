@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "node package.js",
-    "release": "release-it 1.5.1"
+    "release": "release-it 1.5.1 --no-npm.publish"
   },
   "repository": {
     "type": "git",

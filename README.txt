@@ -126,6 +126,7 @@ Version 1.5.0
 	--Fixed bug where server announcement wasnt working.
 	--Fixed bug where the asteroids were generating twice.
 
+[spoiler]
 Version 1.4.5
 	--Hotfix, dont delete claimable asteroids.
 
@@ -141,7 +142,6 @@ Version 1.4.2
 	--Updated all files to match new config file settup
 	--Removed NeutralZone option, and neutralzone file.
 
-[spoiler]
 Version 1.4.1
 -Moved most file to mods/ directory in preperation for steam support
 -Added Loglevel
