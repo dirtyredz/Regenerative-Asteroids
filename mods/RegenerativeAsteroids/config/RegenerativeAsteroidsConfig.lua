@@ -1,8 +1,16 @@
 local RegenerativeAsteroidsConfig = {}
 
 RegenerativeAsteroidsConfig.Author = "Dirtyredz"
-RegenerativeAsteroidsConfig.Version = "[1.4.5]"
 RegenerativeAsteroidsConfig.ModName = "[RegenerativeAsteroids]"
+
+RegenerativeAsteroidsConfig.Version = {
+  major=1, minor=4, patch = 6,
+  string = function()
+      return  Config.Version.major .. '.' ..
+              Config.Version.minor .. '.' ..
+              Config.Version.patch
+  end
+}
 
 RegenerativeAsteroidsConfig.frequency = 300; -- 0 to 1000, probability of this sector to appear. Keep around 300 to be average with other similiar sectors.
 RegenerativeAsteroidsConfig.announcment = true; -- true or false, false will disable the server wide message that one of these sectors have been found.
@@ -19,7 +27,7 @@ RegenerativeAsteroidsConfig.MaxAsteroidSize = 25.0; --Any number larger then Min
 
 function RegenerativeAsteroidsConfig.print(...)
   local args = table.pack(...)
-  table.insert(args,1,RegenerativeAsteroidsConfig.ModName .. RegenerativeAsteroidsConfig.Version)
+  table.insert(args,1,RegenerativeAsteroidsConfig.ModName .. "[" .. RegenerativeAsteroidsConfig.Version .. "]")
   print(table.unpack(args))
 end
 

@@ -60,6 +60,7 @@ function SectorSpecifics:addTemplates()
     self:addTemplate("sectors/highfactories")
     self:addTemplate("sectors/miningfield")
     self:addTemplate("sectors/gates")
+    self:addTemplate("sectors/ancientgates")
     self:addTemplate("sectors/neutralzone")
 
     self:addTemplate("sectors/pirateasteroidfield")
@@ -91,12 +92,9 @@ function SectorSpecifics:addTemplates()
     self:addTemplate("sectors/teleporter")
 end
 
-function SectorSpecifics:determineContent(x, y, serverSeed)
-
+function SectorSpecifics.determineFastContent(x, y, serverSeed)
     local regular = false
     local offgrid = false
-    local blocked = false
-    local home = false
     local dust = 0
 
     local hash1 = makeFastHash(x, y, serverSeed.int32);
@@ -135,6 +133,16 @@ function SectorSpecifics:determineContent(x, y, serverSeed)
         dust = 3
     end
 
+    return regular, offgrid, dust
+end
+
+function SectorSpecifics:determineContent(x, y, serverSeed)
+
+    local regular, offgrid, dust = SectorSpecifics.determineFastContent(x, y, serverSeed)
+
+    local blocked = false
+    local home = false
+
     -- check if it's blocked, if yes, don't create any content
     if self.passageMap == nil or self.passageMap.seed ~= serverSeed then
         self.passageMap = PassageMap(serverSeed)
@@ -144,7 +152,7 @@ function SectorSpecifics:determineContent(x, y, serverSeed)
         blocked = true
         regular = false
         offgrid = false
-        return regular, offgrid, blocked, home
+        return regular, offgrid, blocked, home, dust
     else
         blocked = false
     end
@@ -189,6 +197,7 @@ function SectorSpecifics:initialize(x, y, serverSeed)
     self.regular = false
     self.blocked = false
     self.gates = false
+    self.ancientGates = false
     self.dustyness = 0
     self.name = x .. " : " .. y
 
@@ -262,7 +271,6 @@ function SectorSpecifics:initialize(x, y, serverSeed)
         end
 
         local i = selectByWeight(rand, templatesByWeight)
-
         self.generationTemplate = self.templates[i]
 
         --Begin Added by RegenerativeAsteroids - Dirtyredz
@@ -271,6 +279,10 @@ function SectorSpecifics:initialize(x, y, serverSeed)
         end
         --End Added by RegenerativeAsteroids - Dirtyredz
 
+    end
+
+    if self.generationTemplate and self.generationTemplate.ancientGates then
+        self.ancientGates = self.generationTemplate.ancientGates(x, y, serverSeed)
     end
 end
 
