@@ -5,10 +5,10 @@ RegenerativeAsteroidsConfig.ModName = "[RegenerativeAsteroids]"
 
 RegenerativeAsteroidsConfig.Version = {
   major=1, minor=5, patch = 1,
-  string = function()
-      return  Config.Version.major .. '.' ..
-              Config.Version.minor .. '.' ..
-              Config.Version.patch
+  string = function(self)
+      return  self.major .. '.' ..
+              self.minor .. '.' ..
+              self.patch
   end
 }
 
@@ -27,7 +27,7 @@ RegenerativeAsteroidsConfig.MaxAsteroidSize = 25.0; --Any number larger then Min
 
 function RegenerativeAsteroidsConfig.print(...)
   local args = table.pack(...)
-  table.insert(args,1,RegenerativeAsteroidsConfig.ModName .. "[" .. RegenerativeAsteroidsConfig.Version .. "]")
+  table.insert(args,1,RegenerativeAsteroidsConfig.ModName .. "[" .. RegenerativeAsteroidsConfig.Version:string() .. "]")
   print(table.unpack(args))
 end
 
