@@ -4,7 +4,7 @@ RegenerativeAsteroidsConfig.Author = "Dirtyredz"
 RegenerativeAsteroidsConfig.ModName = "[RegenerativeAsteroids]"
 
 RegenerativeAsteroidsConfig.Version = {
-  major=1, minor=5, patch = 1,
+  major=1, minor=5, patch = 2,
   string = function(self)
       return  self.major .. '.' ..
               self.minor .. '.' ..

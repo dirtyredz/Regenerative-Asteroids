@@ -54,6 +54,9 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 ## Downloads
 ___
+__Version 1.5.2__
+[Regenerative Asteroids v1.5.2](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.2/Regenerative-Asteroids-v1.5.2.zip)
+
 __Version 1.5.1__
 [Regenerative Asteroids v1.5.1](https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.1/Regenerative-Asteroids-v1.5.1.zip)
 
@@ -112,6 +115,9 @@ __Version 1.0.0__
 
 ## Changelog
 ___
+__Version 1.5.2__
+	--Fixed print command
+
 __Version 1.5.1__
 	--Updated SectorSpecifics file
   --Fixed Version info

@@ -54,11 +54,14 @@ https://github.com/dirtyredz/Regenerative-Asteroids
 
 [center][b]Downloads[/b][/center]
 [hr]
-Version 1.5.1
-[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.1/Regenerative-Asteroids-v1.5.1.zip]Regenerative Asteroids v1.5.1[/url]
+Version 1.5.2
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.2/Regenerative-Asteroids-v1.5.2.zip]Regenerative Asteroids v1.5.2[/url]
 
 Past Download Links:
 [spoiler]
+Version 1.5.1
+[url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.1/Regenerative-Asteroids-v1.5.1.zip]Regenerative Asteroids v1.5.1[/url]
+
 Version 1.5.0
 [url=https://github.com/dirtyredz/Regenerative-Asteroids/releases/download/v1.5.0/Regenerative-Asteroids-v1.5.0.zip]Regenerative Asteroids v1.5.0[/url]
 
@@ -114,6 +117,8 @@ Version 1.0.0
 [center][b]Changelog[/b][/center]
 [hr]
 [b]Changelog[/b]
+Version 1.5.2
+	--Fixed print command
 
 Version 1.5.1
 	--Updated SectorSpecifics file
